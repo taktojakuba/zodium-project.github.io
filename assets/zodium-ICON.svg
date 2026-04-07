@@ -9,9 +9,6 @@
    id="svg1"
    inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
    sodipodi:docname="zodium-ICON.svg"
-   inkscape:export-filename="zodium-ICON-white.png"
-   inkscape:export-xdpi="96"
-   inkscape:export-ydpi="96"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -26,34 +23,32 @@
      inkscape:pagecheckerboard="1"
      inkscape:deskcolor="#505050"
      inkscape:document-units="px"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="230.87036"
-     inkscape:cy="300.87393"
+     inkscape:zoom="1.6641869"
+     inkscape:cx="323.58145"
+     inkscape:cy="257.48311"
      inkscape:window-width="2560"
      inkscape:window-height="1416"
      inkscape:window-x="0"
      inkscape:window-y="0"
-     inkscape:window-maximized="0"
+     inkscape:window-maximized="1"
      inkscape:current-layer="layer1" />
   <defs
      id="defs1" />
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
-     id="layer1"
-     style="stroke:#b8cad4;stroke-opacity:1">
-    <g
-       id="g12"
-       style="fill:none;stroke:#b8cad4;stroke-opacity:1;stroke-width:15;stroke-dasharray:none;fill-opacity:1">
-      <path
-         id="rect2"
-         style="display:inline;fill:none;fill-opacity:1;stroke:#b8cad4;stroke-opacity:1;stroke-width:15;stroke-dasharray:none"
-         inkscape:label="rect2"
-         d="M 255.57422 -0.42578125 C 113.75022 -0.42578125 -0.42578125 113.75022 -0.42578125 255.57422 C -0.42578125 326.4857 28.119228 390.48589 74.390625 436.75781 C 120.6627 483.03042 184.6617 511.57422 255.57422 511.57422 C 397.39822 511.57422 511.57422 397.39822 511.57422 255.57422 C 511.57422 184.66222 483.03177 120.66263 436.75977 74.390625 L 436.75781 74.390625 C 390.48589 28.119227 326.4857 -0.42578125 255.57422 -0.42578125 z " />
-    </g>
+     id="layer1">
+    <rect
+       style="fill:none;stroke:#b8cad4;stroke-width:14;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect1"
+       width="498"
+       height="498"
+       x="7"
+       y="7"
+       ry="300.40167" />
     <path
        id="text10"
-       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:409.363px;font-family:'Adwaita Mono';-inkscape-font-specification:'Adwaita Mono Bold Italic';writing-mode:lr-tb;direction:ltr;fill:none;fill-opacity:1;stroke-width:15;stroke:#b8cad4;stroke-opacity:1;stroke-dasharray:none"
-       d="m 176.59569,131.98047 -7.97265,33.96875 h 149.48633 l -193.83399,179.25196 -7.97265,33.96679 h 218.25 l 7.97266,-33.96679 H 193.03905 l 193.83399,-179.25196 7.97266,-33.96875 z m 217.92579,0.55665 -277.89453,246.07421 z" />
+       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:409.363px;font-family:'Adwaita Mono';-inkscape-font-specification:'Adwaita Mono Bold Italic';writing-mode:lr-tb;direction:ltr;fill:none;fill-opacity:1;stroke:#b8cad4;stroke-width:15;stroke-dasharray:none;stroke-opacity:1"
+       d="m 177.02147,132.40625 -7.97265,33.96875 h 149.48634 l -193.83399,179.25196 -7.97265,33.96679 h 218.25 l 7.97266,-33.96679 H 193.46483 L 387.29882,166.375 l 7.97266,-33.96875 z m 217.9258,0.55665 -277.89453,246.07421 z" />
   </g>
 </svg>
