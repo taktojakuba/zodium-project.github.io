@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./assets/zodium-ICON.svg">
+    <link rel="stylesheet" href="main.css">
+    <title>zodium</title>
+</head>
+<body>
+
+    <nav class="navbar-side" id="sidebar" style="display: none;">
+            <div class="nav-brand"><a href="https://github.com/zodium-project"><img src="./assets/zodium.svg"></div></a>
+            <div class="nav-links" class="wiki" id="homebutton">
+                <a onclick="showsection('home');hidebar()" class="button button-ghost" style="justify-content: flex-start;">home</a>
+            </div>
+            <div class="nav-links" class="wiki" class="nav-buttons" id="wiki" style="display: none;">
+                <a onclick="showsection('wik0')" class="button button-ghost" style="justify-content: flex-start;">zcore</a>
+                <a onclick="showsection('wik1')" class="button button-ghost" style="justify-content: flex-start;">zfetch-rs</a>
+                <a onclick="showsection('wik2')" class="button button-ghost" style="justify-content: flex-start;">zrun-rs</a>
+                <a onclick="showsection('wik3')" class="button button-ghost" style="justify-content: flex-start;">zgpu</a>
+                <a onclick="showsection('wik4')" class="button button-ghost" style="justify-content: flex-start;">zync</a>
+            </div>
+            <div class="nav-links" class="assets" class="nav-buttons" id="ast" style="display: none;">
+                <a onclick="showsection('ast0')" class="button button-ghost" style="justify-content: flex-start;">zynori(niri)</a>
+                <a onclick="showsection('ast1')" class="button button-ghost" style="justify-content: flex-start;">zykron(kde)</a>
+            </div>
+            <div style="margin-top: auto;">
+                <div class="badge"></div>
+            </div>
+    </nav>
+    <main class="main-content">
+        <div class="section centered" id="home" style="display: block;">
+            <h1 style="font-size: 5.5rem;">zodium-project</h1>
+            <p style="font-size: 1.5rem;">zodium is fedora based linux distro that focuses on stability</p>
+            <div style="font-size: 1rem;">
+            <p class="text-small">key features:</p>
+            <p class="text-secondary">Stable & secure boot OOTB</p>
+            <p class="text-secondary">Zero bloat & no kitchen-sink install</p>
+            <p class="text-secondary">Beginner Friendly & Atomic</p>
+            <a onclick="shownav('wiki');showbar()" class="button button-ghost" style="justify-content: flex-start;"><p>wiki/guide</p></a><a onclick="shownav('ast');showbar()" class="button button-ghost" style="justify-content: flex-start;"><p>zycore-flavours</p></a>
+            </div>
+        </div> 
+        <div class="section" id="wik0"style="display: none;">
+            <h1 class="">zycore</h1>
+            <p><strong>zcore-bootc — overview</strong><br>zcore-bootc is a minimal, image-based Linux distribution built on fedora-bootc. It provides a clean, practical foundation without unnecessary desktop components while including essential tools, drivers, and sensible defaults. Designed for bootc-style deployments, servers, workstations, and custom desktop spins.</p> <p><strong>zcore — philosophy</strong><br>zcore focuses on minimalism without being barebones. It avoids random package bloat, unnecessary desktop stacks, and oversized installations. The goal is practical, predictable, and maintainable base images with sensible defaults, curated drivers, multimedia support, and post-install helpers.</p> <p><strong>zcore — key features</strong><br>OCI image-based design, no desktop environment by default, easily extended into custom images or desktop spins, includes system tuning, sysctl, service and user defaults, tuned for plug-and-play hardware support.</p> <p><strong>zcore — variants</strong><br>Different images depending on hardware:<br>• zcore-mesa — desktops with Intel or AMD GPUs<br>• zcore-nvidia — desktops with NVIDIA GPUs (Turing and above)</p> <p><strong>zcore — intended use cases</strong><br>Ideal for headless systems, homelabs, bootc/image-based workflows, custom desktop spins, gaming-focused custom images, and workstation base images. Not intended for users expecting a full desktop out of the box or zero-setup beginner desktops.</p> <p><strong>zcore — included out of the box</strong><br>Non-free multimedia codecs, out-of-tree kernel modules, Podman & Docker, modern CLI tools, udev rules for hardware support, post-install scripts, and performance-oriented system tweaks.</p> <p><strong>zcore — desktop environment</strong><br>No desktop environment is included by default to keep the base image smaller, cleaner, maintainable, and suitable for headless or layered deployments. Users can build their own desktop on top of zcore as needed.</p>
+        </div>       
+        <div class="section" id="wik1"style="display: none;">
+            <h1 class="">zfetch-rs</h1>
+            <p class="text-secondary">zfetch a fast & good looking fetch tool</p>
+            <p><strong>zfetch — overview</strong><br>zfetch is a minimal system info fetch tool written in Rust. It displays system information with clean visuals, supports multiple themes, auto-resizes to terminal size, and includes a TUI for easy configuration.</p> <p><strong>zfetch — installation</strong><br>Clone the repository and install using: cargo install --path .<br>Alternatively, use a precompiled binary from the releases section.</p> <p><strong>zfetch — usage</strong><br>Run zfetch normally to display system info.<br>Use flags like --os to change logo, --image to display images, --config to open TUI config, --refresh to update cached values, and --update to refresh config version.</p> <p><strong>zfetch — configuration</strong><br>Config is stored at ~/.config/zfetch/config.toml and auto-generated on first run. You can edit it manually or via the built-in TUI.</p>
+        </div>
+        <div class="section" id="wik2"style="display: none;">
+            <h1 class="">zrun-rs</h1>
+            <p class="text-secondary">A fast, polished TUI shell-script launcher written in Rust</p>
+            <p><strong>zrun — overview</strong><br>zrun is a fast TUI-based script launcher. It lets you browse, search, tag, and execute shell scripts with zero external dependencies.</p> <p><strong>zrun — installation</strong><br>Install via cargo install --path . or use prebuilt binary.</p> <p><strong>zrun — usage</strong><br>Run zrun to open TUI picker.<br>Use CLI commands like run &lt;name&gt;, list, show, edit, which, and history.<br>Supports fuzzy search, tagging, and script previews.</p> <p><strong>zrun — configuration</strong><br>Config file at ~/.config/zrun/config.toml (not auto-created).<br>Defines script directories, history limit, and behavior options.</p> <p><strong>zrun — features</strong><br>Includes built-in fuzzy search, script tagging via comments, run history, syntax highlighting, and multi-directory priority system for scripts.</p>
+        </div>
+        <div class="section" id="wik3"style="display: none;">
+            <h1 class="">zgpu</h1>
+            <p class="text-secondary">short desc</p>
+            <p><strong>zgpu — overview</strong><br>zgpu is a GPU selection and PRIME offload launcher. It allows running apps on specific GPUs across Intel, AMD, and NVIDIA. Built as a static Rust binary with no runtime dependencies.</p> <p><strong>zgpu — installation</strong><br>Add musl target: rustup target add x86_64-unknown-linux-musl<br>Build: cargo build --release<br>Install: cargo install --path .</p> <p><strong>zgpu — usage</strong><br>Run zgpu alone to see GPU detection summary.<br>Use options like --use-device to select GPU, --interactive-choose for menu selection, --list-devices to list GPUs, and --verbose for detailed info.<br>Commands executed after zgpu run on selected GPU.</p> <p><strong>zgpu — configuration</strong><br>GPU mappings are saved in ~/.config/zgpu/defined.</p>
+        </div>
+        <div class="section" id="wik4"style="display: none;">
+            <h1 class="">zync</h1>
+            <p class="text-secondary">short desc</p>
+            <p><strong>zync — overview</strong><br>zync is a unified update manager for Fedora Atomic and similar systems. It handles system updates, Flatpak, Homebrew, containers, firmware, and rollbacks from a single command.</p> <p><strong>zync — installation</strong><br>Build using cargo build --release (or musl target).<br>Install binary: sudo install -Dm755 target/release/zync /usr/bin/zync</p> <p><strong>zync — usage</strong><br>Run zync with flags like --all to update everything, or specific modules like --flatpak, --rpm-ostree, --podman.<br>Supports dry-run, non-interactive mode, auto-updates, and rollback operations.</p> <p><strong>zync — features</strong><br>Includes rollback support, automatic updates via systemd timers, reboot detection, and cleanup modes.<br>Works with multiple package managers and tools across different distributions.</p> <p><strong>zync — logs and exit codes</strong><br>Logs stored at ~/.local/state/zync.log (or $XDG_STATE_HOME).<br>Exit codes indicate success, argument errors, or module failures.</p>
+        </div>
+        <div class="section" id="ast0"style="display: none;">
+            <h1 class="">zynori</h1>
+            <p class="text-secondary">linux distro based on zcore , ships niri & noctalia-shell by default</p>
+        </div>
+        <div class="section" id="ast1"style="display: none;">
+            <h1 class="">zykron</h1>
+            <p class="text-secondary">linux distro based on zcore , ships with full KDE plasma desktop</p>
+        </div> 
+    </main>
+</body>
+<script src="main.js"></script>
+</html>
