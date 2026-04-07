@@ -15,7 +15,7 @@
                 <a onclick="showsection('home');hidebar()" class="button button-ghost" style="justify-content: flex-start;">home</a>
             </div>
             <div class="nav-links" class="wiki" class="nav-buttons" id="wiki" style="display: none;">
-                <a onclick="showsection('wik0')" class="button button-ghost" style="justify-content: flex-start;">zodium</a>
+                <a onclick="showsection('wik0')" class="button button-ghost" style="justify-content: flex-start;">zcore</a>
                 <a onclick="showsection('wik1')" class="button button-ghost" style="justify-content: flex-start;">zfetch-rs</a>
                 <a onclick="showsection('wik2')" class="button button-ghost" style="justify-content: flex-start;">zrun-rs</a>
                 <a onclick="showsection('wik3')" class="button button-ghost" style="justify-content: flex-start;">zgpu</a>
@@ -23,7 +23,7 @@
             </div>
             <div class="nav-links" class="assets" class="nav-buttons" id="ast" style="display: none;">
                 <a onclick="showsection('ast0')" class="button button-ghost" style="justify-content: flex-start;">zynori(niri)</a>
-                <a onclick="showsection('ast1')" class="button button-ghost" style="justify-content: flex-start;">zyrkon(kde)</a>
+                <a onclick="showsection('ast1')" class="button button-ghost" style="justify-content: flex-start;">zykron(kde)</a>
             </div>
             <div style="margin-top: auto;">
                 <div class="badge"></div>
@@ -42,9 +42,8 @@
             </div>
         </div> 
         <div class="section" id="wik0"style="display: none;">
-            <h1 class="">zodium-project</h1>
-            <p class="text-secondary">short desc</p>
-            <p class="text-small">long desc</p>
+            <h1 class="">zycore</h1>
+            <p><strong>zcore-bootc — overview</strong><br>zcore-bootc is a minimal, image-based Linux distribution built on fedora-bootc. It provides a clean, practical foundation without unnecessary desktop components while including essential tools, drivers, and sensible defaults. Designed for bootc-style deployments, servers, workstations, and custom desktop spins.</p> <p><strong>zcore — philosophy</strong><br>zcore focuses on minimalism without being barebones. It avoids random package bloat, unnecessary desktop stacks, and oversized installations. The goal is practical, predictable, and maintainable base images with sensible defaults, curated drivers, multimedia support, and post-install helpers.</p> <p><strong>zcore — key features</strong><br>OCI image-based design, no desktop environment by default, easily extended into custom images or desktop spins, includes system tuning, sysctl, service and user defaults, tuned for plug-and-play hardware support.</p> <p><strong>zcore — variants</strong><br>Different images depending on hardware:<br>• zcore-mesa — desktops with Intel or AMD GPUs<br>• zcore-nvidia — desktops with NVIDIA GPUs (Turing and above)</p> <p><strong>zcore — intended use cases</strong><br>Ideal for headless systems, homelabs, bootc/image-based workflows, custom desktop spins, gaming-focused custom images, and workstation base images. Not intended for users expecting a full desktop out of the box or zero-setup beginner desktops.</p> <p><strong>zcore — included out of the box</strong><br>Non-free multimedia codecs, out-of-tree kernel modules, Podman & Docker, modern CLI tools, udev rules for hardware support, post-install scripts, and performance-oriented system tweaks.</p> <p><strong>zcore — desktop environment</strong><br>No desktop environment is included by default to keep the base image smaller, cleaner, maintainable, and suitable for headless or layered deployments. Users can build their own desktop on top of zcore as needed.</p>
         </div>       
         <div class="section" id="wik1"style="display: none;">
             <h1 class="">zfetch-rs</h1>
