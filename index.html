@@ -15,11 +15,11 @@
                 <a onclick="showsection('home');hidebar()" class="button button-ghost" style="justify-content: flex-start;">home</a>
             </div>
             <div class="nav-links" class="wiki" class="nav-buttons" id="wiki" style="display: none;">
-                <a onclick="showsection('wik0')" class="button button-ghost" style="justify-content: flex-start;">zcore</a>
+                <a onclick="showsection('wik0')" class="button button-ghost" style="justify-content: flex-start;">zodium</a>
                 <a onclick="showsection('wik1')" class="button button-ghost" style="justify-content: flex-start;">zfetch-rs</a>
                 <a onclick="showsection('wik2')" class="button button-ghost" style="justify-content: flex-start;">zrun-rs</a>
-                <a onclick="showsection('wik3')" class="button button-ghost" style="justify-content: flex-start;">zcore-bootc</a>
-                <a onclick="showsection('wik4')" class="button button-ghost" style="justify-content: flex-start;">zcore-bootc</a>
+                <a onclick="showsection('wik3')" class="button button-ghost" style="justify-content: flex-start;">zgpu</a>
+                <a onclick="showsection('wik4')" class="button button-ghost" style="justify-content: flex-start;">zync</a>
             </div>
             <div class="nav-links" class="assets" class="nav-buttons" id="ast" style="display: none;">
                 <a onclick="showsection('ast0')" class="button button-ghost" style="justify-content: flex-start;">Niri</a>
@@ -49,22 +49,22 @@
         <div class="section" id="wik1"style="display: none;">
             <h1 class="">zfetch-rs</h1>
             <p class="text-secondary">zfetch a fast & good looking fetch tool</p>
-            <p class="text-small"> why use zfetch?</p>
+            <p><strong>zfetch — overview</strong><br>zfetch is a minimal system info fetch tool written in Rust. It displays system information with clean visuals, supports multiple themes, auto-resizes to terminal size, and includes a TUI for easy configuration.</p> <p><strong>zfetch — installation</strong><br>Clone the repository and install using: cargo install --path .<br>Alternatively, use a precompiled binary from the releases section.</p> <p><strong>zfetch — usage</strong><br>Run zfetch normally to display system info.<br>Use flags like --os to change logo, --image to display images, --config to open TUI config, --refresh to update cached values, and --update to refresh config version.</p> <p><strong>zfetch — configuration</strong><br>Config is stored at ~/.config/zfetch/config.toml and auto-generated on first run. You can edit it manually or via the built-in TUI.</p>
         </div>
         <div class="section" id="wik2"style="display: none;">
             <h1 class="">zrun-rs</h1>
             <p class="text-secondary">A fast, polished TUI shell-script launcher written in Rust</p>
-            <p class="text-small">No external runtime deps — just a single static binary</p>
+            <p><strong>zrun — overview</strong><br>zrun is a fast TUI-based script launcher. It lets you browse, search, tag, and execute shell scripts with zero external dependencies.</p> <p><strong>zrun — installation</strong><br>Install via cargo install --path . or use prebuilt binary.</p> <p><strong>zrun — usage</strong><br>Run zrun to open TUI picker.<br>Use CLI commands like run &lt;name&gt;, list, show, edit, which, and history.<br>Supports fuzzy search, tagging, and script previews.</p> <p><strong>zrun — configuration</strong><br>Config file at ~/.config/zrun/config.toml (not auto-created).<br>Defines script directories, history limit, and behavior options.</p> <p><strong>zrun — features</strong><br>Includes built-in fuzzy search, script tagging via comments, run history, syntax highlighting, and multi-directory priority system for scripts.</p>
         </div>
         <div class="section" id="wik3"style="display: none;">
-            <h1 class="">sec3</h1>
+            <h1 class="">zgpu</h1>
             <p class="text-secondary">short desc</p>
-            <p class="text-small">long desc</p>
+            <p><strong>zgpu — overview</strong><br>zgpu is a GPU selection and PRIME offload launcher. It allows running apps on specific GPUs across Intel, AMD, and NVIDIA. Built as a static Rust binary with no runtime dependencies.</p> <p><strong>zgpu — installation</strong><br>Add musl target: rustup target add x86_64-unknown-linux-musl<br>Build: cargo build --release<br>Install: cargo install --path .</p> <p><strong>zgpu — usage</strong><br>Run zgpu alone to see GPU detection summary.<br>Use options like --use-device to select GPU, --interactive-choose for menu selection, --list-devices to list GPUs, and --verbose for detailed info.<br>Commands executed after zgpu run on selected GPU.</p> <p><strong>zgpu — configuration</strong><br>GPU mappings are saved in ~/.config/zgpu/defined.</p>
         </div>
-        <div class="section" id="wiki4"style="display: none;">
-            <h1 class="">zodium-project</h1>
+        <div class="section" id="wik4"style="display: none;">
+            <h1 class="">zync</h1>
             <p class="text-secondary">short desc</p>
-            <p class="text-small">long desc</p>
+            <p><strong>zync — overview</strong><br>zync is a unified update manager for Fedora Atomic and similar systems. It handles system updates, Flatpak, Homebrew, containers, firmware, and rollbacks from a single command.</p> <p><strong>zync — installation</strong><br>Build using cargo build --release (or musl target).<br>Install binary: sudo install -Dm755 target/release/zync /usr/bin/zync</p> <p><strong>zync — usage</strong><br>Run zync with flags like --all to update everything, or specific modules like --flatpak, --rpm-ostree, --podman.<br>Supports dry-run, non-interactive mode, auto-updates, and rollback operations.</p> <p><strong>zync — features</strong><br>Includes rollback support, automatic updates via systemd timers, reboot detection, and cleanup modes.<br>Works with multiple package managers and tools across different distributions.</p> <p><strong>zync — logs and exit codes</strong><br>Logs stored at ~/.local/state/zync.log (or $XDG_STATE_HOME).<br>Exit codes indicate success, argument errors, or module failures.</p>
         </div>
         <div class="section" id="ast0"style="display: none;">
             <h1 class="">zodium-Niri</h1>
