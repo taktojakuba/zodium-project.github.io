@@ -22,8 +22,8 @@
                 <a onclick="showsection('wik4')" class="button button-ghost" style="justify-content: flex-start;">zync</a>
             </div>
             <div class="nav-links" class="assets" class="nav-buttons" id="ast" style="display: none;">
-                <a onclick="showsection('ast0')" class="button button-ghost" style="justify-content: flex-start;">Niri</a>
-                <a onclick="showsection('ast1')" class="button button-ghost" style="justify-content: flex-start;">Kde</a>
+                <a onclick="showsection('ast0')" class="button button-ghost" style="justify-content: flex-start;">zynori(niri)</a>
+                <a onclick="showsection('ast1')" class="button button-ghost" style="justify-content: flex-start;">zyrkon(kde)</a>
             </div>
             <div style="margin-top: auto;">
                 <div class="badge"></div>
@@ -38,7 +38,7 @@
             <p class="text-secondary">Stable & secure boot OOTB</p>
             <p class="text-secondary">Zero bloat & no kitchen-sink install</p>
             <p class="text-secondary">Beginner Friendly & Atomic</p>
-            <a onclick="shownav('wiki');showbar()" class="button button-ghost" style="justify-content: flex-start;"><p>wiki/guide</p></a><a onclick="shownav('ast');showbar()" class="button button-ghost" style="justify-content: flex-start;"><p>zodium-flavours</p></a>
+            <a onclick="shownav('wiki');showbar()" class="button button-ghost" style="justify-content: flex-start;"><p>wiki/guide</p></a><a onclick="shownav('ast');showbar()" class="button button-ghost" style="justify-content: flex-start;"><p>zycore-flavours</p></a>
             </div>
         </div> 
         <div class="section" id="wik0"style="display: none;">
@@ -67,14 +67,12 @@
             <p><strong>zync — overview</strong><br>zync is a unified update manager for Fedora Atomic and similar systems. It handles system updates, Flatpak, Homebrew, containers, firmware, and rollbacks from a single command.</p> <p><strong>zync — installation</strong><br>Build using cargo build --release (or musl target).<br>Install binary: sudo install -Dm755 target/release/zync /usr/bin/zync</p> <p><strong>zync — usage</strong><br>Run zync with flags like --all to update everything, or specific modules like --flatpak, --rpm-ostree, --podman.<br>Supports dry-run, non-interactive mode, auto-updates, and rollback operations.</p> <p><strong>zync — features</strong><br>Includes rollback support, automatic updates via systemd timers, reboot detection, and cleanup modes.<br>Works with multiple package managers and tools across different distributions.</p> <p><strong>zync — logs and exit codes</strong><br>Logs stored at ~/.local/state/zync.log (or $XDG_STATE_HOME).<br>Exit codes indicate success, argument errors, or module failures.</p>
         </div>
         <div class="section" id="ast0"style="display: none;">
-            <h1 class="">zodium-Niri</h1>
-            <p class="text-secondary">short desc</p>
-            <p class="text-small">long desc</p>
+            <h1 class="">zynori</h1>
+            <p class="text-secondary">linux distro based on zcore , ships niri & noctalia-shell by default</p>
         </div>
         <div class="section" id="ast1"style="display: none;">
-            <h1 class="">zodium-Kde</h1>
-            <p class="text-secondary">short desc</p>
-            <p class="text-small">long desc</p>
+            <h1 class="">zykron</h1>
+            <p class="text-secondary">linux distro based on zcore , ships with full KDE plasma desktop</p>
         </div> 
     </main>
 </body>
