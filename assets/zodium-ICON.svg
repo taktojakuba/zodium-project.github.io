@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="512"
+   height="512"
+   viewBox="0 0 512 512"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75042, 2025-12-25)"
+   sodipodi:docname="zodium-ICON.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#505050"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:showpageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="1"
+     inkscape:deskcolor="#505050"
+     inkscape:document-units="px"
+     inkscape:zoom="1.6641869"
+     inkscape:cx="323.58145"
+     inkscape:cy="257.48311"
+     inkscape:window-width="2560"
+     inkscape:window-height="1416"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:none;stroke:#b8cad4;stroke-width:14;stroke-opacity:1;paint-order:stroke fill markers"
+       id="rect1"
+       width="498"
+       height="498"
+       x="7"
+       y="7"
+       ry="300.40167" />
+    <path
+       id="text10"
+       style="font-style:italic;font-variant:normal;font-weight:bold;font-stretch:normal;font-size:409.363px;font-family:'Adwaita Mono';-inkscape-font-specification:'Adwaita Mono Bold Italic';writing-mode:lr-tb;direction:ltr;fill:none;fill-opacity:1;stroke:#b8cad4;stroke-width:15;stroke-dasharray:none;stroke-opacity:1"
+       d="m 177.02147,132.40625 -7.97265,33.96875 h 149.48634 l -193.83399,179.25196 -7.97265,33.96679 h 218.25 l 7.97266,-33.96679 H 193.46483 L 387.29882,166.375 l 7.97266,-33.96875 z m 217.9258,0.55665 -277.89453,246.07421 z" />
+  </g>
+</svg>
