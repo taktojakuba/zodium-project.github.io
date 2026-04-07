@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/x-icon" href="./assets/zodium-ICON.svg">
+    <link rel="stylesheet" href="main.css">
+    <title>zodium</title>
+</head>
+<body>
+
+    <nav class="navbar-side" id="sidebar" style="display: none;">
+            <div class="nav-brand"><a href="https://github.com/zodium-project"><img src="./assets/zodium.svg"></div></a>
+            <div class="nav-links" class="wiki" id="homebutton">
+                <a onclick="showsection('home');hidebar()" class="button button-ghost" style="justify-content: flex-start;">home</a>
+            </div>
+            <div class="nav-links" class="wiki" class="nav-buttons" id="wiki" style="display: none;">
+                <a onclick="showsection('wik0')" class="button button-ghost" style="justify-content: flex-start;">zcore</a>
+                <a onclick="showsection('wik1')" class="button button-ghost" style="justify-content: flex-start;">zfetch-rs</a>
+                <a onclick="showsection('wik2')" class="button button-ghost" style="justify-content: flex-start;">zrun-rs</a>
+                <a onclick="showsection('wik3')" class="button button-ghost" style="justify-content: flex-start;">zcore-bootc</a>
+                <a onclick="showsection('wik4')" class="button button-ghost" style="justify-content: flex-start;">zcore-bootc</a>
+            </div>
+            <div class="nav-links" class="assets" class="nav-buttons" id="ast" style="display: none;">
+                <a onclick="showsection('ast0')" class="button button-ghost" style="justify-content: flex-start;">Niri</a>
+                <a onclick="showsection('ast1')" class="button button-ghost" style="justify-content: flex-start;">Kde</a>
+            </div>
+            <div style="margin-top: auto;">
+                <div class="badge"></div>
+            </div>
+    </nav>
+    <main class="main-content">
+        <div class="section centered" id="home" style="display: block;">
+            <h1 style="font-size: 5.5rem;">zodium-project</h1>
+            <p style="font-size: 1.5rem;">zodium is fedora based linux distro that focuses on stability</p>
+            <div style="font-size: 1rem;">
+            <p class="text-small">key features:</p>
+            <p class="text-secondary">Stable & secure boot OOTB</p>
+            <p class="text-secondary">Zero bloat & no kitchen-sink install</p>
+            <p class="text-secondary">Beginner Friendly & Atomic</p>
+            <a onclick="shownav('wiki');showbar()" class="button button-ghost" style="justify-content: flex-start;"><p>wiki/guide</p></a><a onclick="shownav('ast');showbar()" class="button button-ghost" style="justify-content: flex-start;"><p>zodium-flavours</p></a>
+            </div>
+        </div> 
+        <div class="section" id="wik0"style="display: none;">
+            <h1 class="">zodium-project</h1>
+            <p class="text-secondary">short desc</p>
+            <p class="text-small">long desc</p>
+        </div>       
+        <div class="section" id="wik1"style="display: none;">
+            <h1 class="">zfetch-rs</h1>
+            <p class="text-secondary">zfetch a fast & good looking fetch tool</p>
+            <p class="text-small"> why use zfetch?</p>
+        </div>
+        <div class="section" id="wik2"style="display: none;">
+            <h1 class="">zrun-rs</h1>
+            <p class="text-secondary">A fast, polished TUI shell-script launcher written in Rust</p>
+            <p class="text-small">No external runtime deps — just a single static binary</p>
+        </div>
+        <div class="section" id="wik3"style="display: none;">
+            <h1 class="">sec3</h1>
+            <p class="text-secondary">short desc</p>
+            <p class="text-small">long desc</p>
+        </div>
+        <div class="section" id="wiki4"style="display: none;">
+            <h1 class="">zodium-project</h1>
+            <p class="text-secondary">short desc</p>
+            <p class="text-small">long desc</p>
+        </div>
+        <div class="section" id="ast0"style="display: none;">
+            <h1 class="">zodium-Niri</h1>
+            <p class="text-secondary">short desc</p>
+            <p class="text-small">long desc</p>
+        </div>
+        <div class="section" id="ast1"style="display: none;">
+            <h1 class="">zodium-Kde</h1>
+            <p class="text-secondary">short desc</p>
+            <p class="text-small">long desc</p>
+        </div> 
+    </main>
+</body>
+<script src="main.js"></script>
+</html>
