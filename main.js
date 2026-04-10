@@ -1,22 +1,72 @@
 /* ============================================================
-   ZODIUM — main.js
+   ZODIUM — main.js  (multi-file router edition)
    ============================================================ */
 
-/* ── Section navigation ──────────────────────────────────── */
-function showsection(id) {
-  document.querySelectorAll('.section').forEach(el => {
-    el.style.display = 'none';
-  });
-  const target = document.getElementById(id);
-  if (target) {
-    target.style.display = 'block';
-    window.scrollTo({ top: 0, behavior: 'instant' });
+/* ── Route map ───────────────────────────────────────────── */
+const ROUTES = {
+  'home':                'website/home.html',
+  'ast-quiz':            'website/wiki.html',
+  'wiki/distros/zcore':  'website/wiki-files/distros/zcore.html',
+  'wiki/distros/zynori': 'website/wiki-files/distros/zynori.html',
+  'wiki/distros/zykron': 'website/wiki-files/distros/zykron.html',
+  'wiki/tools/zfetch':   'website/wiki-files/tools/zfetch.html',
+  'wiki/tools/zrun':     'website/wiki-files/tools/zrun.html',
+  'wiki/tools/zgpu':     'website/wiki-files/tools/zgpu.html',
+  'wiki/tools/zync':     'website/wiki-files/tools/zync.html',
+  'wiki/tools/zbox':     'website/wiki-files/tools/zbox.html',
+};
+
+/* ── Page cache ──────────────────────────────────────────── */
+const PAGE_CACHE = {};
+
+/* ── Core router ─────────────────────────────────────────── */
+async function navigate(route) {
+  const container = document.getElementById('page-container');
+  const path = ROUTES[route];
+
+  if (!path) {
+    console.warn('zodium: unknown route:', route);
+    return;
   }
-  document.querySelectorAll('.nav-item').forEach(el => {
-    el.classList.remove('active-nav');
-  });
+
+  // Fetch & cache
+  if (!PAGE_CACHE[route]) {
+    try {
+      const res = await fetch(path);
+      if (!res.ok) throw new Error(res.status);
+      PAGE_CACHE[route] = await res.text();
+    } catch (err) {
+      console.error('zodium: failed to load', path, err);
+      container.innerHTML = `<div style="padding:60px 40px;color:var(--text-muted);font-family:var(--font-mono);font-size:13px;">failed to load page: ${path}</div>`;
+      return;
+    }
+  }
+
+  container.innerHTML = PAGE_CACHE[route];
+  window.scrollTo({ top: 0, behavior: 'instant' });
+
+  // Re-run page-specific init after content swap
+  if (route === 'home') {
+    initStars();
+    runTypedAnimation();
+    initScrollReveal();
+    initQuizInstance(
+      document.getElementById('flavour-quiz'),
+      'quiz-result',
+      'quiz-restart'
+    );
+  }
+
+  if (route === 'ast-quiz') {
+    initQuizInstance(
+      document.getElementById('flavour-quiz-2'),
+      'quiz-result-2',
+      'quiz-restart-2'
+    );
+  }
 }
 
+/* ── Sidebar nav helpers ─────────────────────────────────── */
 function shownav(id) {
   document.querySelectorAll('.nav-section.nav-group').forEach(el => {
     el.style.display = 'none';
@@ -53,8 +103,12 @@ function initStars() {
   const canvas = document.getElementById('star-canvas');
   if (!canvas) return;
 
+  // Avoid double-init if already running
+  if (canvas._zodiumStars) return;
+  canvas._zodiumStars = true;
+
   const ctx = canvas.getContext('2d');
-  let W, H, stars = [];
+  let W, H, stars = [], animId;
 
   const isDark = () =>
     window.matchMedia('(prefers-color-scheme: dark)').matches;
@@ -90,12 +144,9 @@ function initStars() {
 
   function draw() {
     ctx.clearRect(0, 0, W, H);
-    const color = isDark()
-      ? `rgba(184,202,212,`
-      : `rgba(45,59,69,`;
+    const color = isDark() ? `rgba(184,202,212,` : `rgba(45,59,69,`;
 
     for (const s of stars) {
-      /* trail */
       for (let i = 0; i < s.trail.length; i++) {
         const t = s.trail[i];
         const a = (i / s.trail.length) * s.alpha * 0.35;
@@ -104,44 +155,32 @@ function initStars() {
         ctx.fillStyle = color + a + ')';
         ctx.fill();
       }
-      /* star */
       ctx.beginPath();
       ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
       ctx.fillStyle = color + s.alpha + ')';
       ctx.fill();
 
-      /* update */
       s.trail.push({ x: s.x, y: s.y });
       if (s.trail.length > s.trailLen) s.trail.shift();
-
       s.x += Math.cos(s.angle) * s.speed;
       s.y += Math.sin(s.angle) * s.speed;
 
       if (s.x > W + 10 || s.y > H + 10) {
         const ns = mkStar();
-        /* re-enter from top-left edges */
-        if (Math.random() < 0.5) {
-          ns.x = Math.random() * W;
-          ns.y = -5;
-        } else {
-          ns.x = -5;
-          ns.y = Math.random() * H;
-        }
+        if (Math.random() < 0.5) { ns.x = Math.random() * W; ns.y = -5; }
+        else                      { ns.x = -5; ns.y = Math.random() * H; }
         Object.assign(s, ns);
         s.trail = [];
       }
     }
-    requestAnimationFrame(draw);
+    animId = requestAnimationFrame(draw);
   }
 
   resize();
   initStarPool();
   draw();
 
-  const ro = new ResizeObserver(() => {
-    resize();
-    initStarPool();
-  });
+  const ro = new ResizeObserver(() => { resize(); initStarPool(); });
   ro.observe(canvas.parentElement);
 }
 
@@ -149,12 +188,13 @@ function initStars() {
 function runTypedAnimation() {
   const outputEl = document.querySelector('.typed-output');
   const cursorEl = document.querySelector('.term-cursor');
-  if (!outputEl) return;
+  if (!outputEl || outputEl._zodiumTyped) return;
+  outputEl._zodiumTyped = true;
 
   const lines = [
     { text: '✓ Fetching image layers...', color: 't-teal',  delay: 800 },
     { text: '✓ Verifying signatures...', color: 't-white', delay: 1600 },
-    { text: '✓ Staged. Reboot to apply.',color: 't-green', delay: 2600 },
+    { text: '✓ Staged. Reboot to apply.', color: 't-green', delay: 2600 },
   ];
 
   let lineIndex = 0;
@@ -218,33 +258,27 @@ const QUIZ_RESULTS = {
     name: 'zcore',
     desc: 'The bare <strong>fedora-bootc</strong> base image. No desktop, no extras — just a clean, reproducible foundation you can extend into anything you want.',
     tags: ['fedora-bootc', 'OCI', 'bare', 'extensible'],
-    section: 'wik0',
+    route: 'wiki/distros/zcore',
     nav: 'wiki',
   },
   zynori: {
     name: 'zynori',
     desc: 'Built around <strong>niri</strong> — a scrollable tiling Wayland compositor paired with noctalia-shell. Minimal, spatial, and fast. Great for keyboard-driven workflows.',
     tags: ['niri', 'wayland', 'tiling', 'minimal'],
-    section: 'ast0',
+    route: 'wiki/distros/zynori',
     nav: 'ast',
   },
   zykron: {
     name: 'zykron',
     desc: 'A complete <strong>KDE Plasma</strong> desktop, pre-configured and polished from first boot. Feature-rich without the bloat — familiar, flexible, and ready to go.',
     tags: ['kde plasma', 'wayland', 'full desktop', 'floating'],
-    section: 'ast1',
+    route: 'wiki/distros/zykron',
     nav: 'ast',
   },
 };
 
 function scoreQuiz(answers) {
-  /* answers[0]: bare | desktop
-     answers[1]: tiling | float  (only reached if desktop)
-     answers[2]: minimal | feature
-     answers[3]: compositor | de */
-
   if (answers[0] === 'bare') return 'zcore';
-
   let t = 0, f = 0;
   if (answers[1] === 'tiling')     t += 2; else f += 2;
   if (answers[2] === 'minimal')    t += 1; else f += 1;
@@ -256,8 +290,8 @@ function initQuizInstance(quizEl, resultId, restartId) {
   if (!quizEl) return;
   let step = 0;
   const answers = [];
-  const steps   = quizEl.querySelectorAll('.quiz-step');
-  const pips    = quizEl.querySelectorAll('.quiz-pip');
+  const steps    = quizEl.querySelectorAll('.quiz-step');
+  const pips     = quizEl.querySelectorAll('.quiz-pip');
   const resultEl = document.getElementById(resultId);
   const totalSteps = steps.length;
 
@@ -275,18 +309,9 @@ function initQuizInstance(quizEl, resultId, restartId) {
 
       setTimeout(() => {
         step++;
-
-        /* if user chose "bare" on step 0, skip remaining steps */
-        if (answers[0] === 'bare') {
-          showResult();
-          return;
-        }
-
-        if (step < totalSteps) {
-          renderStep();
-        } else {
-          showResult();
-        }
+        if (answers[0] === 'bare') { showResult(); return; }
+        if (step < totalSteps) renderStep();
+        else showResult();
       }, 300);
     });
   });
@@ -301,7 +326,7 @@ function initQuizInstance(quizEl, resultId, restartId) {
     resultEl.querySelector('.result-desc').innerHTML   = r.desc;
     resultEl.querySelector('.result-tags').innerHTML   = r.tags.map(t => `<span class="rtag">${t}</span>`).join('');
     const goBtn = resultEl.querySelector('.result-go');
-    if (goBtn) goBtn.onclick = () => { shownav(r.nav); showbar(); showsection(r.section); };
+    if (goBtn) goBtn.onclick = () => { shownav(r.nav); showbar(); navigate(r.route); };
     resultEl.classList.add('active');
   }
 
@@ -315,34 +340,18 @@ function initQuizInstance(quizEl, resultId, restartId) {
   renderStep();
 }
 
-function initQuiz() {
-  initQuizInstance(
-    document.getElementById('flavour-quiz'),
-    'quiz-result',
-    'quiz-restart'
-  );
-  initQuizInstance(
-    document.getElementById('flavour-quiz-2'),
-    'quiz-result-2',
-    'quiz-restart-2'
-  );
-}
-
-/* ── Init ──────────────────────────────────────────────── */
+/* ── Init ────────────────────────────────────────────────── */
 document.addEventListener('DOMContentLoaded', () => {
-  showsection('home');
-  hidebar();
-
+  // Wire up home nav button
   const homebtn = document.getElementById('homebutton');
   if (homebtn) {
     homebtn.querySelector('.nav-item')?.addEventListener('click', () => {
-      showsection('home');
       hidebar();
+      navigate('home');
     });
   }
 
-  initStars();
-  runTypedAnimation();
-  initScrollReveal();
-  initQuiz();
+  // Boot into home
+  hidebar();
+  navigate('home');
 });

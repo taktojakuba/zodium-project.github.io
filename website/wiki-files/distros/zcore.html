@@ -1,0 +1,64 @@
+<!-- zcore -->
+<div class="section wiki-section" id="wik-zcore" style="display:block;">
+    <div class="page-header">
+        <div class="breadcrumb">
+            <a onclick="navigate('home')">home</a>
+            <span class="breadcrumb-sep">/</span>
+            distro
+            <span class="breadcrumb-sep">/</span>
+            zcore
+        </div>
+        <h1>zcore</h1>
+        <p class="page-sub">Minimal, image-based Linux distribution built on fedora-bootc. No desktop by default — extend it into anything.</p>
+        <div class="page-meta">
+            <div class="meta-item"><span class="meta-dot dot-blue"></span>OCI image</div>
+            <div class="meta-item"><span class="meta-dot dot-green"></span>Intel · AMD · NVIDIA</div>
+            <div class="meta-item"><span class="meta-dot dot-teal"></span>MPL-2.0</div>
+        </div>
+    </div>
+    <div class="content-body">
+        <div class="content-block">
+            <h2>Overview</h2>
+            <p>zcore is a minimal, image-based distribution built on <strong>fedora-bootc</strong>. It ships a clean, practical foundation — no desktop environment — along with essential drivers, multimedia codecs, and sensible system defaults. Designed for bootc-style deployments, homelabs, workstations, and custom desktop spins.</p>
+        </div>
+        <div class="content-block">
+            <h2>Philosophy</h2>
+            <p>Minimal without being unusable. zcore skips the package bloat and unnecessary desktop stacks in favour of a <strong>predictable, maintainable base</strong>. Curated hardware support and codecs out of the box mean you can start building immediately — without hunting down drivers first.</p>
+            <div class="callout"><strong>Note:</strong> zcore is not a full desktop. Look at the flavours — zynori or zykron — if you want a ready-to-use desktop environment.</div>
+        </div>
+        <div class="content-block">
+            <h2>Variants</h2>
+            <div class="variant-grid">
+                <div class="variant-card">
+                    <span class="variant-name">zcore-bootc</span>
+                    <p>Standard base for Intel and AMD GPU systems. No proprietary drivers.</p>
+                </div>
+                <div class="variant-card">
+                    <span class="variant-name">zcore-nvidia</span>
+                    <p>Includes proprietary NVIDIA drivers. Requires Turing architecture or newer.</p>
+                </div>
+            </div>
+        </div>
+        <div class="content-block">
+            <h2>Switching to zcore</h2>
+            <div class="code-block">
+                <span class="code-block-label">bash</span>
+                <span class="t-muted">$</span> <span class="t-green">sudo bootc switch</span> <span class="t-accent">ghcr.io/zodium-project/zcore-bootc:latest</span>
+            </div>
+            <p>Run the command, wait for the image to stage, then reboot. The next boot is your new system.</p>
+        </div>
+        <div class="content-block">
+            <h2>What's included</h2>
+            <ul class="feature-list">
+                <li>OCI image-based — fully reproducible and layerable</li>
+                <li>No desktop environment — start clean, add what you need</li>
+                <li>Non-free multimedia codecs included out of the box</li>
+                <li>Out-of-tree kernel modules and hardware support</li>
+                <li>Podman and Docker included and configured</li>
+                <li>Modern CLI tooling, udev rules, and firmware packages</li>
+                <li>Performance-oriented kernel and system tweaks applied by default</li>
+                <li>Easily extended via <code>FROM</code> in your own Containerfile</li>
+            </ul>
+        </div>
+    </div>
+</div>
