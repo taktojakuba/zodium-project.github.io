@@ -401,11 +401,12 @@ body:has(.main-content.sidebar-open) .topbar { display: none; }
 
 /* CTA */
 .hero-cta {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 10px;
-  flex-wrap: wrap;
   opacity: 0;
   animation: lineUp 0.65s cubic-bezier(0.22, 1, 0.36, 1) 0.4s forwards;
+  max-width: 380px;
 }
 
 .btn {
