@@ -1,0 +1,5 @@
+[zodium-pkgs]
+name=Zodium Packages
+baseurl=https://zodium-project.github.io/repo/pkgs/x86_64/
+enabled=1
+gpgcheck=0
