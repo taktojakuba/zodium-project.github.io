@@ -650,7 +650,20 @@ gpgcheck=0
       list.innerHTML = `<div class="state-box"><div class="spinner"></div><span>loading ${repo} packages...</span></div>`;
 
       try {
-        const res = await fetch(REPOS[repo].primaryUrl);
+        // Step 1 — fetch repomd.xml to find actual primary filename
+        const repomdUrl = REPOS[repo].primaryUrl.replace('primary.xml.gz', 'repomd.xml');
+        const repomdRes = await fetch(repomdUrl);
+        if (!repomdRes.ok) throw new Error('HTTP ' + repomdRes.status);
+        const repomdText = await repomdRes.text();
+        const repomdDoc = new DOMParser().parseFromString(repomdText, 'application/xml');
+        const primaryEl = [...repomdDoc.querySelectorAll('data')].find(el => el.getAttribute('type') === 'primary');
+        const primaryHref = primaryEl?.querySelector('location')?.getAttribute('href');
+        if (!primaryHref) throw new Error('primary not found in repomd.xml');
+
+        // Step 2 — fetch the actual primary.xml.gz using its real checksummed filename
+        const baseUrl = REPOS[repo].primaryUrl.replace('primary.xml.gz', '');
+        const primaryFilename = primaryHref.split('/').pop();
+        const res = await fetch(baseUrl + primaryFilename);
         if (!res.ok) throw new Error('HTTP ' + res.status);
 
         const buf = await res.arrayBuffer();
