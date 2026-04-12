@@ -1,0 +1,5 @@
+[zodium-kmods]
+name=Zodium Kernel Modules
+baseurl=https://zodium-project.github.io/repo/kmods/x86_64/
+enabled=1
+gpgcheck=0
