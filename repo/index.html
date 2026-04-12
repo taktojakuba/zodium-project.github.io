@@ -730,11 +730,9 @@ gpgcheck=0
         if (REPOS[repo].releaseBase) {
           dlUrl = REPOS[repo].releaseBase + loc.split('/').pop();
         } else {
-          // kmods: extract kernel version from location path
-          const match = loc.match(/kernel-([^/]+)\//);
-          if (match) {
-            dlUrl = `https://github.com/zodium-project/kmods-zodium/releases/download/kernel-${match[1]}/${loc.split('/').pop()}`;
-          }
+          // kmods: release tag is kernel-{version-arch} built from the package version/arch
+          const filename = loc.split('/').pop();
+          dlUrl = `https://github.com/zodium-project/kmods-zodium/releases/latest/download/${filename}`;
         }
 
         pkgs.push({ name, arch, version, epoch, summary, size: parseInt(size), loc, dlUrl, time: parseInt(time) });
