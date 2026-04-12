@@ -174,17 +174,18 @@ a { color: inherit; text-decoration: none; }
 .main-content {
   margin-left: 0;
   min-height: 100vh;
+  padding-bottom: 50px;
   transition: margin-left var(--transition);
 }
 .main-content.sidebar-open { margin-left: var(--sidebar-w); }
 
-/* ── Top bar ─────────────────────────────────────────────── */
+/* ── Bottom bar ─────────────────────────────────────────────── */
 .topbar {
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 20px; height: 50px;
   background: var(--bg-secondary);
-  border-bottom: 1px solid var(--border);
-  position: sticky; top: 0; z-index: 100;
+  border-top: 1px solid var(--border);
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
 }
 .topbar-brand {
   font-size: 14px; font-weight: 600; letter-spacing: -0.3px;
@@ -597,9 +598,9 @@ body:has(.main-content.sidebar-open) .topbar { display: none; }
 }
 .fstrip-item {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   gap: 14px;
-  padding: 26px 20px;
+  padding: 8px 20px;
   transition: background var(--transition);
 }
 .fstrip-item:hover { background: var(--bg-secondary); }
