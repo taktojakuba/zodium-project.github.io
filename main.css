@@ -224,13 +224,13 @@ body:has(.main-content.sidebar-open) .topbar { display: none; }
    ════════════════════════════════════════════════════════════ */
 .hero {
   position: relative;
-  min-height: 100vh;
+  height: calc(100vh - 50px);
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  padding: 80px 40px 60px;
+  padding: 40px 40px 40px;
 }
 
 /* Stars canvas */
