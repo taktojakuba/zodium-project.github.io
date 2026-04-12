@@ -50,7 +50,6 @@
                 <a onclick="showsection('ast1')" class="nav-item"><span class="nav-dot"></span>zykron</a>
             </div>
         </div>
-
         <div class="nav-section nav-group" id="rep" style="display:none;">
         </div>
 
@@ -63,23 +62,748 @@
         </div>
     </nav>
 
-    <!-- ── Top bar ───────────────────────────────────────── -->
-    <div class="topbar" id="topbar" style="display:flex;">
-        <div class="topbar-brand">
-            <img src="./assets/zodium-ICON.svg" alt="">
-            zodium
-        </div>
-        <div class="topbar-actions">
-            <button class="topbar-btn" onclick="shownav('wiki');showbar();showsection('wik0')">wiki</button>
-            <button class="topbar-btn" onclick="shownav('rep');showbar();showsection('rep0')">repo</button>
-        </div>
-    </div>
-
-    <!-- ── Main ─────────────────────────────────────────── -->
+    <!-- ── Main ───────────────────────────────────────────── -->
     <main class="main-content" id="main">
-        <div id="section-mount" class="section" style="display:block;"></div>
-    </main>
 
+        <!-- ════════════════════════════════════════════════
+             HOME
+             ════════════════════════════════════════════════ -->
+        <div class="section" id="home" style="display:block;">
+
+            <!-- Hero -->
+            <div class="hero">
+                <canvas id="star-canvas" style="position:absolute;inset:0;width:100%;height:100%;"></canvas>
+                <div class="hero-grid" aria-hidden="true"></div>
+                <div class="hero-orb hero-orb--1" aria-hidden="true"></div>
+                <div class="hero-orb hero-orb--2" aria-hidden="true"></div>
+                <div class="hero-orb hero-orb--3" aria-hidden="true"></div>
+
+                <div class="hero-inner">
+                    <!-- Left column -->
+                    <div class="hero-left">
+                        <div class="hero-badge">
+                            <span class="badge-dot"></span>
+                            OCI · Atomic · Open Source
+                        </div>
+
+                        <div class="hero-project-name">Zodium Project</div>
+
+                        <h1 class="hero-title">
+                            Linux ecosystem<br>
+                            built for <em>clarity</em>.
+                            <span class="line-thin">nothing more.</span>
+                        </h1>
+
+                        <p class="hero-sub">
+                            Minimal, image-based, designed to stay out of your way.
+                            Reproducible by default — extend it into anything.
+                        </p>
+
+                        <div class="hero-cta">
+                            <a onclick="shownav('wiki');showbar();showsection('wik0')" class="btn btn-primary">
+                                <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 7h10M7 2l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                                Read the wiki
+                            </a>
+                            <a onclick="shownav('ast');showbar();showsection('ast-quiz')" class="btn btn-ghost">
+                                Get started →
+                            </a>
+                            <a onclick="shownav('rep');showbar();showsection('rep0')" class="btn btn-ghost">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"></path>    </svg>
+                                Browse repository
+                            </a>
+                            <a href="https://github.com/zodium-project" target="_blank" class="btn btn-ghost">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                                GitHub
+                            </a>
+                        </div>
+
+                        <div class="hero-stats">
+                            <div class="hero-stat">
+                                <div class="stat-num">5</div>
+                                <div class="stat-label">Rust-native tools</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="stat-num">3</div>
+                                <div class="stat-label">Desktop flavours</div>
+                            </div>
+                            <div class="hero-stat">
+                                <div class="stat-num">MPL-2</div>
+                                <div class="stat-label">Open source</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right column -->
+                    <div class="hero-right">
+                        <!-- Terminal -->
+                        <div class="terminal">
+                            <div class="term-bar">
+                                <span class="term-dot" style="background:#b85c58;"></span>
+                                <span class="term-dot" style="background:#a0906a;"></span>
+                                <span class="term-dot" style="background:#6a9872;"></span>
+                                <span class="term-title">bash — switch to zodium</span>
+                            </div>
+                            <div class="term-body">
+                                <div class="term-line">
+                                    <span class="t-muted">$</span>
+                                    <span class="t-green"> sudo bootc switch</span>
+                                    <span class="t-accent"> ghcr.io/zodium-project/zcore-bootc:latest</span>
+                                </div>
+                                <div class="term-line typed-line">
+                                    <span class="typed-output"></span>
+                                    <span class="term-cursor">▋</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Info cards -->
+                        <div class="hero-card">
+                            <div class="hcard-top">
+                                <span class="hcard-label">Base image</span>
+                                <span class="hcard-badge badge-blue">OCI</span>
+                            </div>
+                            <div class="hcard-title">zcore-bootc</div>
+                            <div class="hcard-desc">Fedora-based, image-locked. Atomic updates, full rollback support.</div>
+                        </div>
+
+                        <div class="hero-card">
+                            <div class="hcard-top">
+                                <span class="hcard-label">Status</span>
+                                <span class="hcard-badge badge-green">active</span>
+                            </div>
+                            <div class="hcard-title">All tools in Rust</div>
+                            <div class="hcard-desc">zfetch · zrun · zgpu · zync · zbox — fast, static, no surprises.</div>
+                        </div>
+
+                        <div class="hero-card">
+                            <div class="hcard-top">
+                                <span class="hcard-label">Flavours</span>
+                                <span class="hcard-badge badge-teal">2 available</span>
+                            </div>
+                            <div class="hcard-title">zynori · zykron</div>
+                            <div class="hcard-desc">Niri tiling or KDE Plasma — both pre-configured and ready to boot.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div><!-- #home -->
+
+        <!-- ════════════════════════════════════════════════
+             WIKI SECTIONS
+             ════════════════════════════════════════════════ -->
+        <!-- zcore -->
+        <div class="section wiki-section" id="wik0" style="display:none;">
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a onclick="showsection('home');hidebar()">home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    distro
+                    <span class="breadcrumb-sep">/</span>
+                    zcore
+                </div>
+                <h1>zcore</h1>
+                <p class="page-sub">Minimal, image-based Linux distribution built on fedora-bootc. No desktop by default — extend it into anything.</p>
+                <div class="page-meta">
+                    <div class="meta-item"><span class="meta-dot dot-blue"></span>OCI image</div>
+                    <div class="meta-item"><span class="meta-dot dot-green"></span>Intel · AMD · NVIDIA</div>
+                    <div class="meta-item"><span class="meta-dot dot-teal"></span>MPL-2.0</div>
+                </div>
+            </div>
+            <div class="content-body">
+                <div class="content-block">
+                    <h2>Overview</h2>
+                    <p>zcore is a minimal, image-based distribution built on <strong>fedora-bootc</strong>. It ships a clean, practical foundation — no desktop environment — along with essential drivers, multimedia codecs, and sensible system defaults. Designed for bootc-style deployments, homelabs, workstations, and custom desktop spins.</p>
+                </div>
+                <div class="content-block">
+                    <h2>Philosophy</h2>
+                    <p>Minimal without being unusable. zcore skips the package bloat and unnecessary desktop stacks in favour of a <strong>predictable, maintainable base</strong>. Curated hardware support and codecs out of the box mean you can start building immediately — without hunting down drivers first.</p>
+                    <div class="callout"><strong>Note:</strong> zcore is not a full desktop. Look at the flavours — zynori or zykron — if you want a ready-to-use desktop environment.</div>
+                </div>
+                <div class="content-block">
+                    <h2>Variants</h2>
+                    <div class="variant-grid">
+                        <div class="variant-card">
+                            <span class="variant-name">zcore-bootc</span>
+                            <p>Standard base for Intel and AMD GPU systems. No proprietary drivers.</p>
+                        </div>
+                        <div class="variant-card">
+                            <span class="variant-name">zcore-nvidia</span>
+                            <p>Includes proprietary NVIDIA drivers. Requires Turing architecture or newer.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <h2>Switching to zcore</h2>
+                    <div class="code-block">
+                        <span class="code-block-label">bash</span>
+                        <span class="t-muted">$</span> <span class="t-green">sudo bootc switch</span> <span class="t-accent">ghcr.io/zodium-project/zcore-bootc:latest</span>
+                    </div>
+                    <p>Run the command, wait for the image to stage, then reboot. The next boot is your new system.</p>
+                </div>
+                <div class="content-block">
+                    <h2>What's included</h2>
+                    <ul class="feature-list">
+                        <li>OCI image-based — fully reproducible and layerable</li>
+                        <li>No desktop environment — start clean, add what you need</li>
+                        <li>Non-free multimedia codecs included out of the box</li>
+                        <li>Out-of-tree kernel modules and hardware support</li>
+                        <li>Podman and Docker included and configured</li>
+                        <li>Modern CLI tooling, udev rules, and firmware packages</li>
+                        <li>Performance-oriented kernel and system tweaks applied by default</li>
+                        <li>Easily extended via <code>FROM</code> in your own Containerfile</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- zfetch -->
+        <div class="section wiki-section" id="wik1" style="display:none;">
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a onclick="showsection('home');hidebar()">home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    tools
+                    <span class="breadcrumb-sep">/</span>
+                    zfetch
+                </div>
+                <h1>zfetch</h1>
+                <p class="page-sub">Fast, good-looking system info fetch written in Rust. Themes, inline images, TUI config editor.</p>
+                <div class="page-meta">
+                    <div class="meta-item"><span class="meta-dot dot-blue"></span>Rust</div>
+                    <div class="meta-item"><span class="meta-dot dot-green"></span>TUI config</div>
+                    <div class="meta-item"><span class="meta-dot dot-teal"></span>themeable</div>
+                </div>
+            </div>
+            <div class="content-body">
+                <div class="content-block">
+                    <h2>Overview</h2>
+                    <p>zfetch displays system information with clean visuals, supports multiple themes, auto-resizes to your terminal width, and ships a TUI for configuration — no manual TOML editing required unless you want it.</p>
+                </div>
+                <div class="content-block">
+                    <h2>Installation</h2>
+                    <div class="code-block">
+                        <span class="code-block-label">bash</span>
+                        <span class="t-muted">$</span> <span class="t-green">git clone</span> <span class="t-white">https://github.com/zodium-project/zfetch</span><br>
+                        <span class="t-muted">$</span> <span class="t-green">cargo install</span> <span class="t-white">--path .</span>
+                    </div>
+                    <p>Or grab a precompiled binary from the GitHub releases page — no Rust toolchain required.</p>
+                </div>
+                <div class="content-block">
+                    <h2>Flags</h2>
+                    <ul class="feature-list">
+                        <li><code>--os &lt;name&gt;</code> — override the displayed distro logo</li>
+                        <li><code>--image</code> — render inline images using your terminal's protocol</li>
+                        <li><code>--config</code> — open the interactive TUI config editor</li>
+                        <li><code>--refresh</code> — invalidate and rebuild all cached values</li>
+                        <li><code>--update</code> — migrate config to the latest schema version</li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <h2>Configuration</h2>
+                    <p>Config lives at <code>~/.config/zfetch/config.toml</code> and is auto-generated on first run. Launch the built-in TUI with <code>zfetch --config</code> for a visual editor — no manual TOML editing needed.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- zrun -->
+        <div class="section wiki-section" id="wik2" style="display:none;">
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a onclick="showsection('home');hidebar()">home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    tools
+                    <span class="breadcrumb-sep">/</span>
+                    zrun
+                </div>
+                <h1>zrun</h1>
+                <p class="page-sub">TUI shell-script launcher with fuzzy search, tagging, and run history. Written in Rust.</p>
+                <div class="page-meta">
+                    <div class="meta-item"><span class="meta-dot dot-blue"></span>Rust</div>
+                    <div class="meta-item"><span class="meta-dot dot-green"></span>fuzzy search</div>
+                    <div class="meta-item"><span class="meta-dot dot-teal"></span>no external deps</div>
+                </div>
+            </div>
+            <div class="content-body">
+                <div class="content-block">
+                    <h2>Overview</h2>
+                    <p>zrun is a fast TUI-based script launcher. Browse, search, tag, and execute shell scripts from a single interface. No external dependencies — one static binary.</p>
+                </div>
+                <div class="content-block">
+                    <h2>Installation</h2>
+                    <div class="code-block">
+                        <span class="code-block-label">bash</span>
+                        <span class="t-muted">$</span> <span class="t-green">cargo install</span> <span class="t-white">--path .</span>
+                    </div>
+                    <p>Prebuilt binaries are also available on the releases page.</p>
+                </div>
+                <div class="content-block">
+                    <h2>Commands</h2>
+                    <ul class="feature-list">
+                        <li><code>zrun</code> — open the interactive TUI picker</li>
+                        <li><code>zrun run &lt;name&gt;</code> — run a script directly by name</li>
+                        <li><code>zrun list</code> — list all scripts with tags</li>
+                        <li><code>zrun show &lt;name&gt;</code> — preview script contents with highlighting</li>
+                        <li><code>zrun edit &lt;name&gt;</code> — open a script in your configured editor</li>
+                        <li><code>zrun history</code> — view the full run history log</li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <h2>Features</h2>
+                    <p>Built-in fuzzy search, script tagging via inline comments, run history tracking, syntax highlighting in preview mode, and a multi-directory priority system for organising script collections.</p>
+                </div>
+                <div class="content-block">
+                    <h2>Configuration</h2>
+                    <p>Config at <code>~/.config/zrun/config.toml</code>. Not auto-created — only add it when you need to customise script directories, history limits, or editor preferences.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- zgpu -->
+        <div class="section wiki-section" id="wik3" style="display:none;">
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a onclick="showsection('home');hidebar()">home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    tools
+                    <span class="breadcrumb-sep">/</span>
+                    zgpu
+                </div>
+                <h1>zgpu</h1>
+                <p class="page-sub">GPU selection and PRIME offload launcher. Static Rust binary, no runtime dependencies.</p>
+                <div class="page-meta">
+                    <div class="meta-item"><span class="meta-dot dot-blue"></span>Rust · musl</div>
+                    <div class="meta-item"><span class="meta-dot dot-green"></span>Intel · AMD · NVIDIA</div>
+                    <div class="meta-item"><span class="meta-dot dot-teal"></span>PRIME offload</div>
+                </div>
+            </div>
+            <div class="content-body">
+                <div class="content-block">
+                    <h2>Overview</h2>
+                    <p>zgpu lets you run applications on a specific GPU — Intel, AMD, or NVIDIA — with no runtime dependencies. Built as a fully static musl binary so it works anywhere without library concerns.</p>
+                </div>
+                <div class="content-block">
+                    <h2>Installation</h2>
+                    <div class="code-block">
+                        <span class="code-block-label">bash</span>
+                        <span class="t-muted">$</span> <span class="t-green">rustup target add</span> <span class="t-white">x86_64-unknown-linux-musl</span><br>
+                        <span class="t-muted">$</span> <span class="t-green">cargo build</span> <span class="t-white">--release --target x86_64-unknown-linux-musl</span><br>
+                        <span class="t-muted">$</span> <span class="t-green">cargo install</span> <span class="t-white">--path .</span>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <h2>Usage</h2>
+                    <ul class="feature-list">
+                        <li><code>zgpu</code> — print a GPU detection summary</li>
+                        <li><code>zgpu --list-devices</code> — list all detected GPUs with IDs</li>
+                        <li><code>zgpu --use-device &lt;id&gt; -- &lt;cmd&gt;</code> — run a command on a specific GPU</li>
+                        <li><code>zgpu --interactive-choose</code> — pick a GPU interactively</li>
+                        <li><code>zgpu --verbose</code> — print detailed GPU capability information</li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <h2>Configuration</h2>
+                    <p>GPU mappings and saved device names are stored in <code>~/.config/zgpu/defined</code>. Assign friendly names to devices so you can reference them by name instead of ID.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- zync -->
+        <div class="section wiki-section" id="wik4" style="display:none;">
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a onclick="showsection('home');hidebar()">home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    tools
+                    <span class="breadcrumb-sep">/</span>
+                    zync
+                </div>
+                <h1>zync</h1>
+                <p class="page-sub">Unified update manager — system, Flatpak, containers, firmware. One command.</p>
+                <div class="page-meta">
+                    <div class="meta-item"><span class="meta-dot dot-blue"></span>Rust</div>
+                    <div class="meta-item"><span class="meta-dot dot-green"></span>Fedora Atomic</div>
+                    <div class="meta-item"><span class="meta-dot dot-teal"></span>rollback support</div>
+                </div>
+            </div>
+            <div class="content-body">
+                <div class="content-block">
+                    <h2>Overview</h2>
+                    <p>zync is a single-command update manager for Fedora Atomic and similar image-based systems. It coordinates system image updates, Flatpak, Homebrew, containers, and firmware — so you never have to remember which tool handles what.</p>
+                </div>
+                <div class="content-block">
+                    <h2>Installation</h2>
+                    <div class="code-block">
+                        <span class="code-block-label">bash</span>
+                        <span class="t-muted">$</span> <span class="t-green">cargo build</span> <span class="t-white">--release</span><br>
+                        <span class="t-muted">$</span> <span class="t-green">sudo install</span> <span class="t-white">-Dm755 target/release/zync /usr/bin/zync</span>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <h2>Flags</h2>
+                    <ul class="feature-list">
+                        <li><code>--all</code> — update everything in one pass</li>
+                        <li><code>--flatpak</code> — update Flatpak packages only</li>
+                        <li><code>--rpm-ostree</code> — update the base system image only</li>
+                        <li><code>--podman</code> — update container images only</li>
+                        <li><code>--dry-run</code> — preview pending changes without applying them</li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <h2>Features</h2>
+                    <p>Rollback support, automatic updates via systemd timer, reboot detection, and cleanup modes. Works across Flatpak, rpm-ostree, Homebrew, and Podman in a single pass. Logs written to <code>~/.local/state/zync.log</code>.</p>
+                    <div class="callout"><strong>Tip:</strong> Run <code>zync --dry-run --all</code> first to preview what would change before committing.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- zbox -->
+        <div class="section wiki-section" id="wik5" style="display:none;">
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a onclick="showsection('home');hidebar()">home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    tools
+                    <span class="breadcrumb-sep">/</span>
+                    zbox
+                </div>
+                <h1>zbox</h1>
+                <p class="page-sub">Rootless container manager and distrobox replacement, built for zodium. Written in Rust.</p>
+                <div class="page-meta">
+                    <div class="meta-item"><span class="meta-dot dot-blue"></span>Rust</div>
+                    <div class="meta-item"><span class="meta-dot dot-green"></span>rootless</div>
+                    <div class="meta-item"><span class="meta-dot dot-teal"></span>distrobox replacement</div>
+                </div>
+            </div>
+            <div class="content-body">
+                <div class="content-block">
+                    <h2>Overview</h2>
+                    <p>zbox is zodium's native container manager — a lightweight, opinionated replacement for distrobox. Manage rootless containers with a clean interface that feels native to the rest of the zodium toolchain.</p>
+                    <div class="callout"><strong>Note:</strong> zbox is currently in active development. This page will be updated as the tool matures.</div>
+                </div>
+                <div class="content-block">
+                    <h2>Philosophy</h2>
+                    <p>distrobox is powerful but carries significant shell-script complexity. zbox reimplements the core workflow — enter a container, export apps, manage images — as a single static Rust binary with no runtime dependencies.</p>
+                </div>
+                <div class="content-block">
+                    <h2>Planned features</h2>
+                    <ul class="feature-list">
+                        <li>Create and enter rootless containers from any OCI image</li>
+                        <li>Export desktop entries and binaries to the host</li>
+                        <li>Named container profiles with persistent storage</li>
+                        <li>First-class integration with zync for container image updates</li>
+                        <li>Static binary — no shell, no Python, no runtime deps</li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <h2>Status</h2>
+                    <p>Follow development on <a href="https://github.com/zodium-project" target="_blank" style="color:var(--accent-text);text-decoration:underline;text-underline-offset:3px;">GitHub</a>. Contributions and feedback welcome.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ════════════════════════════════════════════════
+             FLAVOUR SECTIONS
+             ════════════════════════════════════════════════ -->
+
+        <!-- Flavour quiz standalone -->
+        <div class="section" id="ast-quiz" style="display:none;">
+            <div class="home-section">
+                <div class="home-section-inner">
+                    <div class="section-eyebrow">get started</div>
+                    <h2 class="section-heading">What are you looking for?</h2>
+                    <p class="section-sub">Answer a few quick questions and we'll point you in the right direction.</p>
+                    <p style="font-size:13.5px;color:var(--text-muted);margin-top:-20px;margin-bottom:32px;">
+                        You can also browse both flavours below and decide for yourself.
+                    </p>
+
+                    <div style="display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;">
+                        <div class="flavour-quiz" id="flavour-quiz-2">
+                            <div class="quiz-title">Find your flavour</div>
+                            <div class="quiz-sub">A few questions. One recommendation.</div>
+                            <div class="quiz-progress">
+                                <div class="quiz-pip"></div>
+                                <div class="quiz-pip"></div>
+                                <div class="quiz-pip"></div>
+                                <div class="quiz-pip"></div>
+                            </div>
+                            <!-- Step 0 -->
+                            <div class="quiz-step active">
+                                <div class="quiz-q">What are you starting from?</div>
+                                <div class="quiz-options">
+                                    <div class="quiz-option" data-val="bare"><span class="quiz-opt-icon">▣</span>Bare base — I'll build my own setup</div>
+                                    <div class="quiz-option" data-val="desktop"><span class="quiz-opt-icon">◫</span>Desktop flavour — something ready to use</div>
+                                </div>
+                            </div>
+                            <!-- Step 1 -->
+                            <div class="quiz-step">
+                                <div class="quiz-q">How do you prefer to manage your windows?</div>
+                                <div class="quiz-options">
+                                    <div class="quiz-option" data-val="tiling"><span class="quiz-opt-icon">▦</span>Tiling — automatic layout, keyboard-first</div>
+                                    <div class="quiz-option" data-val="float"><span class="quiz-opt-icon">◻</span>Floating — classic draggable windows</div>
+                                </div>
+                            </div>
+                            <!-- Step 2 -->
+                            <div class="quiz-step">
+                                <div class="quiz-q">What matters more to you?</div>
+                                <div class="quiz-options">
+                                    <div class="quiz-option" data-val="minimal"><span class="quiz-opt-icon">◈</span>Speed and minimalism</div>
+                                    <div class="quiz-option" data-val="feature"><span class="quiz-opt-icon">◉</span>Features and polish</div>
+                                </div>
+                            </div>
+                            <!-- Step 3 -->
+                            <div class="quiz-step">
+                                <div class="quiz-q">Wayland preference?</div>
+                                <div class="quiz-options">
+                                    <div class="quiz-option" data-val="compositor"><span class="quiz-opt-icon">◧</span>Compositor — composable, raw</div>
+                                    <div class="quiz-option" data-val="de"><span class="quiz-opt-icon">▨</span>Full DE — complete desktop environment</div>
+                                </div>
+                            </div>
+                            <div class="quiz-result" id="quiz-result-2">
+                                <div class="result-card">
+                                    <div class="result-name"></div>
+                                    <div class="result-desc"></div>
+                                    <div class="result-tags"></div>
+                                    <a class="btn btn-primary btn-sm result-go" style="margin-top:12px;display:inline-flex;">View →</a>
+                                </div>
+                                <button class="quiz-reset" id="quiz-restart-2">← start over</button>
+                            </div>
+                        </div>
+
+                        <div style="display:flex;flex-direction:column;gap:12px;">
+                            <div class="flavour-card" onclick="shownav('wiki');showbar();showsection('wik0')" style="opacity:1;">
+                                <div class="flavour-card-header">
+                                    <div class="flavour-name">zcore</div>
+                                    <span class="hcard-badge badge-blue">base image</span>
+                                </div>
+                                <p class="flavour-desc">Bare fedora-bootc base. No desktop — start from scratch and build exactly what you want.</p>
+                                <div class="flavour-tags"><span class="ftag">fedora-bootc</span><span class="ftag">OCI</span><span class="ftag">bare</span></div>
+                            </div>
+                            <div class="flavour-card" onclick="shownav('ast');showbar();showsection('ast0')" style="opacity:1;">
+                                <div class="flavour-card-header">
+                                    <div class="flavour-name">zynori</div>
+                                    <span class="hcard-badge badge-teal">tiling</span>
+                                </div>
+                                <p class="flavour-desc">Niri tiling compositor + noctalia-shell. Minimal and spatial.</p>
+                                <div class="flavour-tags"><span class="ftag">niri</span><span class="ftag">tiling</span><span class="ftag">minimal</span></div>
+                            </div>
+                            <div class="flavour-card" onclick="shownav('ast');showbar();showsection('ast1')" style="opacity:1;">
+                                <div class="flavour-card-header">
+                                    <div class="flavour-name">zykron</div>
+                                    <span class="hcard-badge badge-blue">full desktop</span>
+                                </div>
+                                <p class="flavour-desc">KDE Plasma, pre-configured. Feature-rich, no bloat.</p>
+                                <div class="flavour-tags"><span class="ftag">kde plasma</span><span class="ftag">full desktop</span></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- zynori -->
+        <div class="section wiki-section" id="ast0" style="display:none;">
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a onclick="showsection('home');hidebar()">home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    flavours
+                    <span class="breadcrumb-sep">/</span>
+                    zynori
+                </div>
+                <h1>zynori</h1>
+                <p class="page-sub">zcore with niri and noctalia-shell — scrollable tiling Wayland, ready to boot.</p>
+                <div class="page-meta">
+                    <div class="meta-item"><span class="meta-dot dot-teal"></span>niri compositor</div>
+                    <div class="meta-item"><span class="meta-dot dot-green"></span>noctalia-shell</div>
+                    <div class="meta-item"><span class="meta-dot dot-blue"></span>Wayland</div>
+                </div>
+            </div>
+            <div class="content-body">
+                <div class="content-block">
+                    <h2>Overview</h2>
+                    <p>zynori is a zcore flavour built around <strong>niri</strong> — a scrollable tiling Wayland compositor — paired with noctalia-shell for a cohesive, minimal desktop. If you want a tiling workflow without fighting configuration files, this is the flavour for you.</p>
+                    <div class="callout">Designed for keyboard-first workflows. Windows scroll horizontally rather than split the screen — a natural, spatial approach to tiling.</div>
+                </div>
+                <div class="content-block">
+                    <h2>Switching to zynori</h2>
+                    <div class="code-block">
+                        <span class="code-block-label">bash</span>
+                        <span class="t-muted">$</span> <span class="t-green">sudo bootc switch</span> <span class="t-accent">ghcr.io/zodium-project/zynori:latest</span>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <h2>What's included</h2>
+                    <ul class="feature-list">
+                        <li>niri — scrollable tiling Wayland compositor</li>
+                        <li>noctalia-shell — minimal, cohesive shell layer</li>
+                        <li>Pre-configured keybindings and workspace behaviour</li>
+                        <li>All of zcore's base tooling and defaults</li>
+                        <li>Ready to use after first boot — no post-install setup</li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <h2>Who is this for?</h2>
+                    <p>zynori suits people who want a lean, focused desktop with tiling window management — developers, terminal-heavy workflows, and anyone who prefers not to touch a mouse. If you want a full traditional desktop experience, look at <strong>zykron</strong> instead.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- zykron -->
+        <div class="section wiki-section" id="ast1" style="display:none;">
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a onclick="showsection('home');hidebar()">home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    flavours
+                    <span class="breadcrumb-sep">/</span>
+                    zykron
+                </div>
+                <h1>zykron</h1>
+                <p class="page-sub">zcore with a full KDE Plasma desktop, pre-configured and polished from day one.</p>
+                <div class="page-meta">
+                    <div class="meta-item"><span class="meta-dot dot-blue"></span>KDE Plasma</div>
+                    <div class="meta-item"><span class="meta-dot dot-green"></span>Wayland default</div>
+                    <div class="meta-item"><span class="meta-dot dot-teal"></span>pre-configured</div>
+                </div>
+            </div>
+            <div class="content-body">
+                <div class="content-block">
+                    <h2>Overview</h2>
+                    <p>zykron ships a complete <strong>KDE Plasma</strong> desktop, pre-configured and polished from first boot. Feature-rich and familiar — without pulling in unnecessary packages or overriding your choices later.</p>
+                    <div class="callout">Wayland session by default. X11 fallback available but not recommended — KDE Plasma on Wayland is solid and well-supported.</div>
+                </div>
+                <div class="content-block">
+                    <h2>Switching to zykron</h2>
+                    <div class="code-block">
+                        <span class="code-block-label">bash</span>
+                        <span class="t-muted">$</span> <span class="t-green">sudo bootc switch</span> <span class="t-accent">ghcr.io/zodium-project/zykron:latest</span>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <h2>What's included</h2>
+                    <ul class="feature-list">
+                        <li>KDE Plasma desktop — latest stable release</li>
+                        <li>Pre-configured themes, panel layout, and system settings</li>
+                        <li>Wayland session by default, X11 fallback available</li>
+                        <li>All of zcore's base tooling and defaults</li>
+                        <li>No unnecessary KDE apps — only the core desktop components</li>
+                        <li>KDE Discover disabled — use Flatpak and zync for packages</li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <h2>Who is this for?</h2>
+                    <p>zykron is for users who want a full-featured, traditional desktop experience — familiar mouse-driven workflow, system tray, file manager, and all the configuration panels KDE offers. If you want something leaner, look at <strong>zynori</strong>.</p>
+                </div>
+            </div>
+        </div>
+        <div class="page section" id="rep0" style="display: none;">
+
+            <!-- Header -->
+            <div class="page-header">
+            <div class="breadcrumb">
+                <span>zodium</span>
+                <span class="breadcrumb-sep">/</span>
+                <span>repository</span>
+            </div>
+            <h1>package repository</h1>
+            <p class="page-sub">Browse all packages available in the zodium DNF repositories — pkgs and kmods.</p>
+            </div>
+
+            <!-- Repo tabs -->
+            <div class="repo-tabs">
+            <button class="repo-tab active" onclick="switchRepo('pkgs')" id="tab-pkgs">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <rect x="1" y="1" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.2"/>
+                <rect x="7" y="1" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.2"/>
+                <rect x="1" y="7" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.2"/>
+                <rect x="7" y="7" width="4" height="4" rx="1" stroke="currentColor" stroke-width="1.2"/>
+                </svg>
+                pkgs
+                <span class="tab-count" id="count-pkgs">—</span>
+            </button>
+            <button class="repo-tab" onclick="switchRepo('kmods')" id="tab-kmods">
+                <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                <path d="M6 1v2M6 9v2M1 6h2M9 6h2M2.5 2.5l1.5 1.5M8 8l1.5 1.5M2.5 9.5L4 8M8 4l1.5-1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+                </svg>
+                kmods
+                <span class="tab-count" id="count-kmods">—</span>
+            </button>
+            </div>
+
+            <!-- Stats bar -->
+            <div class="stats-bar" id="stats-bar">
+            <div class="stat-item">
+                <span class="stat-dot dot-green"></span>
+                <span>packages: <strong id="stat-total">—</strong></span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-dot dot-blue"></span>
+                <span>repo: <strong id="stat-repo">—</strong></span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-dot dot-teal"></span>
+                <span>last updated: <strong id="stat-updated">—</strong></span>
+            </div>
+            </div>
+
+            <!-- Toolbar -->
+            <div class="toolbar">
+            <div class="search-wrap">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                <circle cx="6" cy="6" r="4.5" stroke="currentColor" stroke-width="1.3"/>
+                <path d="M9.5 9.5L13 13" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+                </svg>
+                <input class="search-input" id="search-input" type="text" placeholder="search packages..." oninput="renderPackages()">
+            </div>
+            <select class="sort-select" id="sort-select" onchange="renderPackages()">
+                <option value="name">sort: name</option>
+                <option value="size">sort: size</option>
+                <option value="version">sort: version</option>
+            </select>
+            </div>
+
+            <!-- Package list -->
+            <div class="pkg-list" id="pkg-list">
+            <div class="state-box">
+                <div class="spinner"></div>
+                <span>loading packages...</span>
+            </div>
+            </div>
+
+            <!-- Install instructions -->
+            <div class="install-section">
+            <div class="section-eyebrow">setup</div>
+            <h2 class="section-heading">add the repositories</h2>
+            <div class="install-grid">
+                <div class="install-card">
+                <div class="install-card-title">pkgs repo</div>
+                <div class="code-block"><span class="c-muted"></span>
+        <span class="c-green">cat</span> &gt; /etc/yum.repos.d/zodium-pkgs.repo <span class="c-accent">&lt;&lt;'EOF'</span>
+        [zodium-pkgs]
+        name=Zodium Packages
+        baseurl=https://zodium-project.github.io/repo/pkgs/x86_64/
+        enabled=1
+        gpgcheck=0
+        <span class="c-accent">EOF</span></div>
+                </div>
+                <div class="install-card">
+                <div class="install-card-title">kmods repo</div>
+                <div class="code-block"><span class="c-muted"></span>
+        <span class="c-green">cat</span> &gt; /etc/yum.repos.d/zodium-kmods.repo <span class="c-accent">&lt;&lt;'EOF'</span>
+        [zodium-kmods]
+        name=Zodium Kernel Modules
+        baseurl=https://zodium-project.github.io/repo/kmods/x86_64/
+        enabled=1
+        gpgcheck=0
+        <span class="c-accent">EOF</span></div>
+                </div>
+            </div>
+            </div>
+
+        </div>
+    </main>
     <script src="repo.js"></script>
     <script src="main.js"></script>
 </body>
