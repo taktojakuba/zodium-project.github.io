@@ -212,7 +212,7 @@ body:has(.main-content.sidebar-open) .topbar { display: none; }
 /* ── Sections ────────────────────────────────────────────── */
 .section {
   display: none;
-  animation: fadeIn 200ms ease;
+  animation: fadeIn 400ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(6px); }

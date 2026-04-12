@@ -5,7 +5,8 @@
 /* ── Route map ───────────────────────────────────────────── */
 const ROUTES = {
   'home':                'website/home.html',
-  'ast-quiz':            'website/wiki.html',
+  'ast-quiz':            'website/getstarted.html',
+  'flavours':            'website/wiki.html',
   'wiki/distros/zcore':  'website/wiki-files/distros/zcore.html',
   'wiki/distros/zynori': 'website/wiki-files/distros/zynori.html',
   'wiki/distros/zykron': 'website/wiki-files/distros/zykron.html',
@@ -22,6 +23,12 @@ const PAGE_CACHE = {};
 /* ── Core router ─────────────────────────────────────────── */
 async function navigate(route) {
   const container = document.getElementById('page-container');
+  const sidebar = document.getElementById('sidebar');
+  const main = document.getElementById('main');
+  const topbar = document.getElementById('topbar');
+  if (sidebar) sidebar.style.display = 'none';
+  if (main) main.classList.remove('sidebar-open');
+  if (topbar) topbar.style.display = 'flex';
   const path = ROUTES[route];
 
   if (!path) {
@@ -58,6 +65,7 @@ async function navigate(route) {
   }
 
   if (route === 'ast-quiz') {
+    hidebar();
     initQuizInstance(
       document.getElementById('flavour-quiz-2'),
       'quiz-result-2',
