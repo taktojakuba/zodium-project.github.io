@@ -26,8 +26,8 @@ async function showsection(id) {
 
   window.scrollTo({ top: 0, behavior: 'instant' });
 
-  // Serve from cache if available
-  if (sectionCache[id]) {
+  // Serve from cache if available (skip cache for rep0 — has live DOM state)
+  if (sectionCache[id] && id !== 'rep0') {
     el.innerHTML = sectionCache[id];
     afterLoad(id);
     return;
@@ -61,9 +61,10 @@ function afterLoad(id) {
     initScrollReveal();
   }
   if (id === 'rep0') {
-    // Re-init repo if pkg-list is empty (first load)
-    if (!document.getElementById('pkg-list')?.children.length) {
-      if (typeof loadRepo === 'function') loadRepo('pkgs');
+    if (typeof loadRepo === 'function') {
+      document.querySelectorAll('.repo-tab').forEach(t => t.classList.remove('active'));
+      const activeTab = document.getElementById('tab-pkgs');
+      if (activeTab) activeTab.classList.add('active');
     }
   }
 }
