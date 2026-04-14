@@ -8,17 +8,12 @@ const cache = {};
 
 const $ = id => document.getElementById(id);
 
+// ── Tab switch ───────────────────────────────────────────
 function switchRepo(repo) {
   activeRepo = repo;
-  
-  const tab = $('tab-' + repo);
-  const search = $('search-input');
-
   document.querySelectorAll('.repo-tab').forEach(t => t.classList.remove('active'));
-  
-  if (tab) tab.classList.add('active');
-  if (search) search.value = ''; // Check if search exists before setting value
-  
+  $('tab-' + repo).classList.add('active');
+  $('search-input').value = '';
   loadRepo(repo);
 }
 
@@ -107,7 +102,7 @@ function updateStats(repo, pkgs) {
 function renderPackages() {
   const list  = $('pkg-list');
   const query = $('search-input').value.toLowerCase().trim();
-  const sort  = $('sort-select')//.value;
+  const sort  = $('sort-select').value;
   const pkgs  = cache[activeRepo];
   if (!pkgs) return;
 
