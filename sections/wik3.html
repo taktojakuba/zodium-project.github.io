@@ -1,0 +1,45 @@
+            <div class="page-header">
+                <div class="breadcrumb">
+                    <a onclick="showsection('home');hidebar()">home</a>
+                    <span class="breadcrumb-sep">/</span>
+                    tools
+                    <span class="breadcrumb-sep">/</span>
+                    zgpu
+                </div>
+                <h1>zgpu</h1>
+                <p class="page-sub">GPU selection and PRIME offload launcher. Static Rust binary, no runtime dependencies.</p>
+                <div class="page-meta">
+                    <div class="meta-item"><span class="meta-dot dot-blue"></span>Rust · musl</div>
+                    <div class="meta-item"><span class="meta-dot dot-green"></span>Intel · AMD · NVIDIA</div>
+                    <div class="meta-item"><span class="meta-dot dot-teal"></span>PRIME offload</div>
+                </div>
+            </div>
+            <div class="content-body">
+                <div class="content-block">
+                    <h2>Overview</h2>
+                    <p>zgpu lets you run applications on a specific GPU — Intel, AMD, or NVIDIA — with no runtime dependencies. Built as a fully static musl binary so it works anywhere without library concerns.</p>
+                </div>
+                <div class="content-block">
+                    <h2>Installation</h2>
+                    <div class="code-block">
+                        <span class="code-block-label">bash</span>
+                        <span class="t-muted">$</span> <span class="t-green">rustup target add</span> <span class="t-white">x86_64-unknown-linux-musl</span><br>
+                        <span class="t-muted">$</span> <span class="t-green">cargo build</span> <span class="t-white">--release --target x86_64-unknown-linux-musl</span><br>
+                        <span class="t-muted">$</span> <span class="t-green">cargo install</span> <span class="t-white">--path .</span>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <h2>Usage</h2>
+                    <ul class="feature-list">
+                        <li><code>zgpu</code> — print a GPU detection summary</li>
+                        <li><code>zgpu --list-devices</code> — list all detected GPUs with IDs</li>
+                        <li><code>zgpu --use-device &lt;id&gt; -- &lt;cmd&gt;</code> — run a command on a specific GPU</li>
+                        <li><code>zgpu --interactive-choose</code> — pick a GPU interactively</li>
+                        <li><code>zgpu --verbose</code> — print detailed GPU capability information</li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <h2>Configuration</h2>
+                    <p>GPU mappings and saved device names are stored in <code>~/.config/zgpu/defined</code>. Assign friendly names to devices so you can reference them by name instead of ID.</p>
+                </div>
+            </div>
