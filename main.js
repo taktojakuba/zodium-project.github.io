@@ -60,12 +60,8 @@ function afterLoad(id) {
     initQuiz();
     initScrollReveal();
   }
-  if (id === 'rep0') {
-    if (typeof loadRepo === 'function') {
-      document.querySelectorAll('.repo-tab').forEach(t => t.classList.remove('active'));
-      const activeTab = document.getElementById('tab-pkgs');
-      if (activeTab) activeTab.classList.add('active');
-    }
+  if (id === 'rep0'){
+    switchRepo('pkgs');
   }
 }
 
