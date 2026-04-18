@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>zodium</title>
+</head>
+<body>
+<script>
+  const path = location.pathname;
+  if (path.startsWith('/wiki')) {
+    sessionStorage.setItem('spa-redirect', path);
+    location.replace('/wiki/');
+  } else if (path.startsWith('/repo')) {
+    location.replace('/repo/');
+  } else if (path.startsWith('/get-started')) {
+    location.replace('/get-started/');
+  } else {
+    location.replace('/');
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/assets/zodium-ICON.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/main.css">
+  <link rel="stylesheet" href="/get-started/get-started.css">
+  <title>get started — zodium</title>
+</head>
+<body>
+<main class="main-content">
+  <div class="gs-page">
+
+    <div class="page-header">
+      <div class="breadcrumb">
+        <a href="/">zodium</a>
+        <span class="breadcrumb-sep">/</span>
+        <span>get started</span>
+      </div>
+      <h2 class="section-heading">Find your flavour</h2>
+      <p class="section-sub">A few questions — we'll point you to the right image.</p>
+    </div>
+
+    <div class="quiz-layout">
+      <div class="flavour-quiz" id="flavour-quiz">
+        <div class="quiz-progress">
+          <div class="quiz-pip"></div>
+          <div class="quiz-pip"></div>
+          <div class="quiz-pip"></div>
+        </div>
+
+        <div class="quiz-step active">
+          <div class="quiz-q">Do you want a desktop session?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-val="yes" data-preview="./screenshots/desktop-yes.png">Yes</div>
+            <div class="quiz-option" data-val="no"  data-preview="./screenshots/desktop-no.png">No</div>
+          </div>
+        </div>
+
+        <div class="quiz-step">
+          <div class="quiz-q">What type of desktop session do you prefer?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-val="tiling"   data-preview="./screenshots/tiling.png">Tiling</div>
+            <div class="quiz-option" data-val="floating" data-preview="./screenshots/floating.png">Floating</div>
+          </div>
+        </div>
+
+        <div class="quiz-step">
+          <div class="quiz-q">What vendor is your primary GPU from?</div>
+          <div class="quiz-options">
+            <div class="quiz-option" data-val="intel">Intel</div>
+            <div class="quiz-option" data-val="amd">AMD</div>
+            <div class="quiz-option" data-val="nvidia">Nvidia</div>
+          </div>
+        </div>
+
+        <div class="quiz-result" id="quiz-result">
+          <div class="result-name"></div>
+          <div class="result-desc"></div>
+          <div class="result-actions">
+            <a class="btn btn-primary btn-sm result-dl" href="#" target="_blank">Download ISO →</a>
+            <a class="btn btn-ghost btn-sm result-wiki" href="#">Read the wiki →</a>
+          </div>
+          <button class="quiz-reset" id="quiz-restart">← start over</button>
+        </div>
+      </div>
+
+      <div class="quiz-preview-col">
+        <div class="quiz-preview" id="quiz-preview-panel">
+          <div class="quiz-preview-placeholder">hover an option to preview</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+<script src="/get-started/get-started.js"></script>
+</body>
+</html>

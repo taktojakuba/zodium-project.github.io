@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="/assets/zodium-ICON.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/main.css">
+  <link rel="stylesheet" href="/wiki/wiki.css">
+  <title>wiki — zodium</title>
+</head>
+<body>
+
+  <!-- ── Mobile top bar ────────────────────────────────────── -->
+  <div class="mobile-topbar">
+    <a href="/" class="mobile-brand">
+      <img src="/assets/zodium.svg" width="18" height="18" alt="">
+      zodium
+    </a>
+    <button class="mobile-nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- ── Sidebar ───────────────────────────────────────────── -->
+  <nav class="navbar-side" id="sidebar">
+    <div class="nav-brand">
+      <a href="/" class="brand-link">
+        <img src="/assets/zodium.svg" alt="zodium" class="brand-logo">
+        <span class="brand-text">zodium</span>
+      </a>
+    </div>
+    <div class="nav-section">
+      <a href="/" class="nav-item">
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M1 6l6-5 6 5v7H9V9H5v4H1V6z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+        home
+      </a>
+      <a href="/wiki" class="nav-item" id="nav-wiki-home">
+        <svg width="13" height="13" viewBox="0 0 14 14" fill="none"><path d="M2 2h10v10H2z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5 5h4M5 7h4M5 9h2" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        wiki
+      </a>
+    </div>
+    <div class="nav-section nav-group" id="wiki-nav"></div>
+    <div class="nav-footer">
+      <a href="https://github.com/zodium-project" class="nav-item github-link" target="_blank">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        GitHub
+      </a>
+      <div class="sidebar-meta">MPL-2.0 · fedora-bootc</div>
+    </div>
+  </nav>
+
+  <!-- ── Main ──────────────────────────────────────────────── -->
+  <main class="main-content sidebar-open" id="main">
+    <div id="wiki-mount"></div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="/wiki/wiki.js"></script>
+</body>
+</html>

@@ -30,7 +30,7 @@
                 list.innerHTML = `<div class="state-box"><div class="spinner"></div><span>loading ${repo} packages…</span></div>`;
 
                 try {
-                    const base = `repo/${repo}/x86_64/repodata/`;
+                    const base = `${repo}/x86_64/repodata/`;
 
                     // Step 1: find real primary filename from repomd.xml
                     const repomdRes = await fetch(base + 'repomd.xml');
