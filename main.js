@@ -179,24 +179,95 @@ const QUIZ_DATA = {
 };
 
 function initQuiz() {
-  const quizEl   = document.getElementById('flavour-quiz-2');
-  const resultEl = document.getElementById('quiz-result-2');
+  const quizEl    = document.getElementById('flavour-quiz-2');
+  const resultEl  = document.getElementById('quiz-result-2');
   const restartEl = document.getElementById('quiz-restart-2');
+  const preview   = document.getElementById('quiz-preview-panel');
   if (!quizEl) return;
 
-  let step = 0;
-  let flavour = null;
+  /* ── State ── */
+  let step = 0, flavour = null, persistedSrc = null;
   const answers = {};
   const steps = quizEl.querySelectorAll('.quiz-step');
   const pips  = quizEl.querySelectorAll('.quiz-pip');
 
+  /* ── Preview ── */
+  const CYCLE = [
+    './assets/screenshots/desktop-yes.png',
+    './assets/screenshots/tiling.png',
+    './assets/screenshots/floating.png',
+    './assets/screenshots/desktop-no.png',
+  ];
+  let cycleIdx = 0, cycleTimer = null;
+  let activeSrc = null, hoverTimer = null;
+
+  // Preload all images up front so swaps are instant
+  CYCLE.forEach(src => { const i = new Image(); i.src = src; });
+
+  function showImg(src, isActive) {
+    if (!preview) return;
+    preview.classList.toggle('active', isActive);
+    if (src === activeSrc) return;
+    activeSrc = src;
+
+    const old = preview.querySelector('img');
+    const img = document.createElement('img');
+    img.src = src;
+    img.alt = '';
+    preview.appendChild(img);
+    requestAnimationFrame(() => requestAnimationFrame(() => img.classList.add('visible')));
+    if (old) {
+      old.classList.remove('visible');
+      setTimeout(() => old.remove(), 380);
+    }
+    preview.querySelector('.quiz-preview-placeholder')?.remove();
+  }
+
+  function startCycle() {
+    stopCycle();
+    showImg(CYCLE[cycleIdx % CYCLE.length], false);
+    cycleTimer = setInterval(() => {
+      cycleIdx++;
+      showImg(CYCLE[cycleIdx % CYCLE.length], false);
+    }, 2500);
+  }
+
+  function stopCycle() {
+    clearInterval(cycleTimer);
+    cycleTimer = null;
+  }
+
+  startCycle();
+
+  /* ── Hover on options with preview ── */
+  quizEl.querySelectorAll('.quiz-option[data-preview]').forEach(opt => {
+    opt.addEventListener('mouseenter', () => {
+      clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(() => {
+        stopCycle();
+        showImg(opt.dataset.preview, true);
+      }, 55);
+    });
+    opt.addEventListener('mouseleave', () => {
+      clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(() => {
+        if (persistedSrc) { showImg(persistedSrc, true); return; }
+        activeSrc = null; // force re-render on cycle resume
+        startCycle();
+      }, 55);
+    });
+  });
+
+  /* ── Step rendering ── */
   const renderStep = () => {
     steps.forEach((s, i) => s.classList.toggle('active', i === step));
     pips.forEach((p, i) => p.classList.toggle('done', i < step));
   };
 
+  /* ── Clicks ── */
   quizEl.querySelectorAll('.quiz-option').forEach(opt => {
     opt.addEventListener('click', () => {
+      clearTimeout(hoverTimer);
       opt.closest('.quiz-step').querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
       opt.classList.add('selected');
       const val = opt.dataset.val;
@@ -204,12 +275,13 @@ function initQuiz() {
       if (step === 0) {
         answers.desktop = val;
         flavour = val === 'no' ? 'zcore' : null;
-        // skip Q2 if no desktop, go straight to GPU
         step = val === 'no' ? 2 : 1;
         setTimeout(renderStep, 300);
       } else if (step === 1) {
         answers.desktop_type = val;
         flavour = val === 'tiling' ? 'zynori' : 'zykron';
+        persistedSrc = opt.dataset.preview || null;
+        if (persistedSrc) { stopCycle(); showImg(persistedSrc, true); }
         step = 2;
         setTimeout(renderStep, 300);
       } else if (step === 2) {
@@ -219,26 +291,33 @@ function initQuiz() {
     });
   });
 
+  /* ── Result ── */
   function showResult(key, gpu) {
     steps.forEach(s => s.classList.remove('active'));
     pips.forEach(p => p.classList.add('done'));
     const d = QUIZ_DATA[key];
     resultEl.querySelector('.result-name').textContent = d.name;
     resultEl.querySelector('.result-desc').textContent = d.desc;
-    const dlBtn   = resultEl.querySelector('.result-dl');
-    const wikiBtn = resultEl.querySelector('.result-wiki');
-    dlBtn.href = d.iso[gpu];
-    wikiBtn.setAttribute('onclick', d.wiki);
-    wikiBtn.href = '#';
+    resultEl.querySelector('.result-dl').href = d.iso[gpu];
+    const wb = resultEl.querySelector('.result-wiki');
+    wb.setAttribute('onclick', d.wiki);
+    wb.href = '#';
     resultEl.classList.add('active');
   }
 
+  /* ── Restart ── */
   restartEl?.addEventListener('click', () => {
-    step = 0; flavour = null;
+    step = 0; flavour = null; persistedSrc = null; activeSrc = null; cycleIdx = 0;
+    clearTimeout(hoverTimer);
     Object.keys(answers).forEach(k => delete answers[k]);
     resultEl.classList.remove('active');
     quizEl.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+    if (preview) {
+      preview.querySelectorAll('img').forEach(i => i.remove());
+      preview.classList.remove('active');
+    }
     renderStep();
+    startCycle();
   });
 
   renderStep();
