@@ -14,7 +14,6 @@
     ]
   },
   "guides": [
-    { "id": "install", "title": "Installing zcore", "file": "guides/install.md" },
     {
       "id": "nvidia",
       "title": "NVIDIA setup",
@@ -22,6 +21,18 @@
         { "title": "Prerequisites",  "file": "guides/nvidia/01-prereqs.md" },
         { "title": "Driver install", "file": "guides/nvidia/02-drivers.md" },
         { "title": "Post-install",   "file": "guides/nvidia/03-post.md" }
+      ]
+    },
+    {
+      "id": "installing",
+      "title": "Install Distro",
+      "steps": [
+        { "title": "Pick Distro",       "file": "guides/installing/01-choose.md" },
+        { "title": "Flashing USB",      "file": "guides/installing/02-flashing.md" },
+        { "title": "Setup System",      "file": "guides/installing/03-pre-install.md" },
+        { "title": "Installing",        "file": "guides/installing/04-install.md" },
+        { "title": "Post Installation", "file": "guides/installing/05-post-install.md" }
+
       ]
     }
   ]
