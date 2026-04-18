@@ -1,0 +1,30 @@
+{
+  "wiki": {
+    "distro": [
+      { "id": "zcore",  "title": "zcore",  "file": "wiki/zcore.md",  "sub": "Minimal image-based base" }
+    ],
+    "flavours": [
+      { "id": "zynori", "title": "zynori", "file": "wiki/zynori.md", "sub": "Niri tiling Wayland" },
+      { "id": "zykron", "title": "zykron", "file": "wiki/zykron.md", "sub": "KDE Plasma desktop" }
+    ],
+    "tools": [
+      { "id": "zfetch", "title": "zfetch", "file": "wiki/zfetch.md", "sub": "System info fetch" },
+      { "id": "zrun",   "title": "zrun",   "file": "wiki/zrun.md",   "sub": "Script launcher" },
+      { "id": "zgpu",   "title": "zgpu",   "file": "wiki/zgpu.md",   "sub": "GPU selector" },
+      { "id": "zync",   "title": "zync",   "file": "wiki/zync.md",   "sub": "Update manager" },
+      { "id": "zbox",   "title": "zbox",   "file": "wiki/zbox.md",   "sub": "Container manager" }
+    ]
+  },
+  "guides": [
+    { "id": "install", "title": "Installing zcore", "file": "guides/install.md" },
+    {
+      "id": "nvidia",
+      "title": "NVIDIA setup",
+      "steps": [
+        { "title": "Prerequisites",  "file": "guides/nvidia/01-prereqs.md" },
+        { "title": "Driver install", "file": "guides/nvidia/02-drivers.md" },
+        { "title": "Post-install",   "file": "guides/nvidia/03-post.md" }
+      ]
+    }
+  ]
+}
