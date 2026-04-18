@@ -18,9 +18,8 @@
       "id": "nvidia",
       "title": "NVIDIA setup",
       "steps": [
-        { "title": "Prerequisites",  "file": "guides/nvidia/01-prereqs.md" },
-        { "title": "Driver install", "file": "guides/nvidia/02-drivers.md" },
-        { "title": "Post-install",   "file": "guides/nvidia/03-post.md" }
+        { "title": "Setup & Installation",  "file": "guides/nvidia/01-pre-install.md" },
+        { "title": "Management & Updates",   "file": "guides/nvidia/02-post-update.md" }
       ]
     },
     {
