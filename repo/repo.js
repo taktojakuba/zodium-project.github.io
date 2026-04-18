@@ -11,12 +11,11 @@
                 function switchRepo(repo) {
                 activeRepo = repo;
                 
-                const tab = $('tab-' + repo);
                 const search = $('search-input');
 
-                document.querySelectorAll('.repo-tab').forEach(t => t.classList.remove('active'));
-                
-                if (tab) tab.classList.add('active');
+                document.querySelectorAll('#nav-pkgs, #nav-kmods').forEach(t => t.classList.remove('active-nav'));
+                const navItem = document.getElementById('nav-' + repo);
+                if (navItem) navItem.classList.add('active-nav');
                 if (search) search.value = ''; // Check if search exists before setting value
                 
                 loadRepo(repo);
@@ -47,7 +46,8 @@
                     const xml = await decompressGz(await res.arrayBuffer());
 
                     cache[repo] = parseXml(xml, repo);
-                    $('count-' + repo).textContent = cache[repo].length;
+                    const countEl = $('count-' + repo);
+                    if (countEl) countEl.textContent = cache[repo].length;
                     updateStats(repo, cache[repo]);
                     renderPackages();
                 } catch (err) {
@@ -107,7 +107,7 @@
                 function renderPackages() {
                 const list  = $('pkg-list');
                 const query = $('search-input').value.toLowerCase().trim();
-                const sort  = $('sort-select')//.value;
+                const sort  = $('sort-select').value;
                 const pkgs  = cache[activeRepo];
                 if (!pkgs) return;
 
