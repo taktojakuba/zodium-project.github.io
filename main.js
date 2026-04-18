@@ -52,14 +52,12 @@ function shownav(id) {
 function hidebar() {
   document.getElementById('sidebar').style.display = 'none';
   document.getElementById('main').classList.remove('sidebar-open');
-  document.getElementById('topbar').style.display = 'flex';
   document.querySelectorAll('.nav-section.nav-group').forEach(el => el.style.display = 'none');
 }
 
 function showbar() {
   document.getElementById('sidebar').style.display = 'flex';
   document.getElementById('main').classList.add('sidebar-open');
-  document.getElementById('topbar').style.display = 'none';
 }
 
 /* ── Stars ───────────────────────────────────────────────── */
