@@ -275,7 +275,6 @@ async function renderGuideStep(guide, stepIdx) {
         </div>
         <div class="content-body">
           <div class="stepper">${pips}</div>
-          <div class="stepper-nav">${prev}${next}</div>
           <div class="content-block md-body">${rebaseImages(marked.parse(body), step.file.replace(/\/[^/]+$/, ''))}</div>
           <div class="stepper-nav stepper-nav--bottom">${prev}${next}</div>
         </div>
