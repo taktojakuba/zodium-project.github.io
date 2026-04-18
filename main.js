@@ -37,7 +37,7 @@ async function showsection(id) {
 /* ── Post-load hooks ─────────────────────────────────────── */
 function afterLoad(id) {
   if (id === 'home')                           { initStars(); runTypedAnimation(); initScrollReveal(); }
-  if (['ast-quiz','ast0','ast1'].includes(id)) { initQuiz(); initScrollReveal(); }
+  if (id === 'ast-quiz') { initQuiz(); initScrollReveal(); }
   if (id === 'rep0')                           { switchRepo('pkgs'); }
 }
 
@@ -159,7 +159,7 @@ const QUIZ_DATA = {
   zynori: {
     name: 'zynori',
     desc: 'Niri scrollable tiling compositor + noctalia-shell. Minimal, keyboard-first, ready to boot.',
-    wiki: "showsection('ast0');shownav('ast');showbar();",
+    wiki: "showsection('wik6');shownav('wiki');showbar();",
     iso:  {
       intel:  'https://archive.org/download/zynori-bootc/zynori-bootc.iso',
       amd:    'https://archive.org/download/zynori-bootc/zynori-bootc.iso',
@@ -169,7 +169,7 @@ const QUIZ_DATA = {
   zykron: {
     name: 'zykron',
     desc: 'KDE Plasma, pre-configured and polished from first boot. Feature-rich, no bloat.',
-    wiki: "showsection('ast1');shownav('ast');showbar();",
+    wiki: "showsection('wik7');shownav('wiki');showbar();",
     iso:  {
       intel:  'https://archive.org/download/zykron-bootc/zykron-bootc.iso',
       amd:    'https://archive.org/download/zykron-bootc/zykron-bootc.iso',
