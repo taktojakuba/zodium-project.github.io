@@ -21,7 +21,7 @@ async function showsection(id) {
     return;
   }
 
-  el.innerHTML = `<div style="padding:60px 32px;color:var(--text-muted);font-size:13px;display:flex;align-items:center;gap:10px;"><div class="spinner"></div><span>loading…</span></div>`;
+  el.innerHTML = '';
 
   try {
     const res = await fetch(`sections/${id}.html`);
