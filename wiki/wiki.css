@@ -109,8 +109,11 @@
   max-width: 760px;
   margin: 0 auto;
   padding: 52px 32px 96px;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
 }
-.wiki-section.guide-page { max-width: 1250px; }
+.wiki-section.guide-page { max-width: 1250px; overflow: auto; height: 100vh; box-sizing: border-box; }
 
 .page-header {
   margin-bottom: 44px;

@@ -113,8 +113,6 @@ async function buildSidebar(activeRoute) {
   nav.innerHTML = `
     <span class="nav-label">distros</span>
     <div class="nav-group">${pageLinks(m.wiki.distros)}</div>
-    <span class="nav-label" style="margin-top:14px;">flavours</span>
-    <div class="nav-group">${pageLinks(m.wiki.flavours)}</div>
     <span class="nav-label" style="margin-top:14px;">guides</span>
     <div class="nav-group">${guideLinks}</div>
     <span class="nav-label" style="margin-top:14px;">tools</span>
@@ -177,7 +175,6 @@ async function renderLanding() {
       </div>
       <div class="wiki-landing-grid">
         ${catHtml('distros', m.wiki.distros)}
-        ${catHtml('flavours', m.wiki.flavours)}
         <div class="wiki-landing-cat">
           <div class="wiki-landing-label">guides</div>
           <div class="wiki-landing-items">${guidesHtml}</div>

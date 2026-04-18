@@ -1,9 +1,7 @@
 {
   "wiki": {
     "distros": [
-      { "id": "zcore",  "title": "zcore",  "file": "distros/zcore.md",  "sub": "Minimal image-based base" }
-    ],
-    "flavours": [
+      { "id": "zcore",  "title": "zcore",  "file": "distros/zcore.md",  "sub": "Minimal image-based base" },
       { "id": "zynori", "title": "zynori", "file": "distros/zynori.md", "sub": "Niri tiling Wayland" },
       { "id": "zykron", "title": "zykron", "file": "distros/zykron.md", "sub": "KDE Plasma desktop" }
     ],
