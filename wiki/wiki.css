@@ -190,8 +190,9 @@
 .md-body th { background: var(--bg-code); color: var(--text-primary); }
 
 /* ── Wiki landing ────────────────────────────────────────── */
-.wiki-landing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px; }
-.wiki-landing-cat { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 20px; }
+.wiki-landing-grid { display: flex; gap: 16px; margin-top: 8px; }
+.wiki-landing-cat { flex: 0 0 auto; }
+.wiki-landing-cat { background: var(--bg-elevated); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; }
 .wiki-landing-label {
   font-size: 9.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--text-muted); font-family: var(--font-mono); margin-bottom: 12px;
@@ -269,7 +270,7 @@
   .mobile-topbar { display: flex; }
   .main-content.sidebar-open { margin-left: 0; }
   .wiki-section { padding: 32px 16px 64px; }
-  .wiki-landing-grid { grid-template-columns: 1fr; }
+  .wiki-landing-grid { flex-direction: column; }
   .variant-grid { grid-template-columns: 1fr; }
   .stepper { gap: 4px; }
 }
