@@ -106,11 +106,11 @@
 
 /* ── Wiki content ────────────────────────────────────────── */
 .wiki-section {
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 52px 32px 32px;
+  max-width: 100%;
+  margin: 0;
+  padding: 52px 48px 32px;
 }
-.wiki-section.guide-page { max-width: 1250px; }
+.wiki-section.guide-page { max-width: 100%; }
 
 .page-header {
   margin-bottom: 44px;
