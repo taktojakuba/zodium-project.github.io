@@ -145,69 +145,103 @@ function initScrollReveal() {
 }
 
 /* ── Flavour quiz ────────────────────────────────────────── */
-const QUIZ_RESULTS = {
-  zcore:  { name:'zcore',  section:'wik0', nav:'wiki', tags:['fedora-bootc','OCI','bare','extensible'],        desc:'The bare <strong>fedora-bootc</strong> base image. No desktop, no extras — just a clean, reproducible foundation you can extend into anything you want.' },
-  zynori: { name:'zynori', section:'ast0', nav:'ast',  tags:['niri','wayland','tiling','minimal'],              desc:'Built around <strong>niri</strong> — a scrollable tiling Wayland compositor paired with noctalia-shell. Minimal, spatial, and fast.' },
-  zykron: { name:'zykron', section:'ast1', nav:'ast',  tags:['kde plasma','wayland','full desktop','floating'], desc:'A complete <strong>KDE Plasma</strong> desktop, pre-configured and polished from first boot. Feature-rich without the bloat.' },
+const QUIZ_DATA = {
+  zcore:  {
+    name: 'zcore',
+    desc: 'Bare fedora-bootc base. No desktop — a clean, reproducible foundation you can extend into anything.',
+    wiki: "showsection('wik0');shownav('wiki');showbar();",
+    iso:  {
+      intel:  'https://archive.org/download/zcore-bootc/zcore-bootc.iso',
+      amd:    'https://archive.org/download/zcore-bootc/zcore-bootc.iso',
+      nvidia: 'https://archive.org/download/zcore-nvidia/zcore-nvidia.iso',
+    },
+  },
+  zynori: {
+    name: 'zynori',
+    desc: 'Niri scrollable tiling compositor + noctalia-shell. Minimal, keyboard-first, ready to boot.',
+    wiki: "showsection('ast0');shownav('ast');showbar();",
+    iso:  {
+      intel:  'https://archive.org/download/zynori-bootc/zynori-bootc.iso',
+      amd:    'https://archive.org/download/zynori-bootc/zynori-bootc.iso',
+      nvidia: 'https://archive.org/download/zynori-nvidia/zynori-nvidia.iso',
+    },
+  },
+  zykron: {
+    name: 'zykron',
+    desc: 'KDE Plasma, pre-configured and polished from first boot. Feature-rich, no bloat.',
+    wiki: "showsection('ast1');shownav('ast');showbar();",
+    iso:  {
+      intel:  'https://archive.org/download/zykron-bootc/zykron-bootc.iso',
+      amd:    'https://archive.org/download/zykron-bootc/zykron-bootc.iso',
+      nvidia: 'https://archive.org/download/zykron-nvidia/zykron-nvidia.iso',
+    },
+  },
 };
 
-function scoreQuiz(a) {
-  if (a[0] === 'bare') return 'zcore';
-  const t = (a[1]==='tiling'?2:0) + (a[2]==='minimal'?1:0) + (a[3]==='compositor'?1:0);
-  return t >= 2 ? 'zynori' : 'zykron';
-}
-
-function initQuizInstance(quizEl, resultId, restartId) {
+function initQuiz() {
+  const quizEl   = document.getElementById('flavour-quiz-2');
+  const resultEl = document.getElementById('quiz-result-2');
+  const restartEl = document.getElementById('quiz-restart-2');
   if (!quizEl) return;
-  let step = 0; const answers = [];
-  const steps    = quizEl.querySelectorAll('.quiz-step');
-  const pips     = quizEl.querySelectorAll('.quiz-pip');
-  const resultEl = document.getElementById(resultId);
+
+  let step = 0;
+  let flavour = null;
+  const answers = {};
+  const steps = quizEl.querySelectorAll('.quiz-step');
+  const pips  = quizEl.querySelectorAll('.quiz-pip');
 
   const renderStep = () => {
-    pips.forEach((p,i)  => p.classList.toggle('done',   i < step));
-    steps.forEach((s,i) => s.classList.toggle('active', i === step));
+    steps.forEach((s, i) => s.classList.toggle('active', i === step));
+    pips.forEach((p, i) => p.classList.toggle('done', i < step));
   };
 
   quizEl.querySelectorAll('.quiz-option').forEach(opt => {
     opt.addEventListener('click', () => {
       opt.closest('.quiz-step').querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
       opt.classList.add('selected');
-      answers[step] = opt.dataset.val;
-      setTimeout(() => {
-        step++;
-        if (answers[0] === 'bare' || step >= stesps.length) showResult();
-        else renderStep();
-      }, 300);
+      const val = opt.dataset.val;
+
+      if (step === 0) {
+        answers.desktop = val;
+        flavour = val === 'no' ? 'zcore' : null;
+        // skip Q2 if no desktop, go straight to GPU
+        step = val === 'no' ? 2 : 1;
+        setTimeout(renderStep, 300);
+      } else if (step === 1) {
+        answers.desktop_type = val;
+        flavour = val === 'tiling' ? 'zynori' : 'zykron';
+        step = 2;
+        setTimeout(renderStep, 300);
+      } else if (step === 2) {
+        answers.gpu = val;
+        setTimeout(() => showResult(flavour, val), 300);
+      }
     });
   });
 
-  function showResult() {
+  function showResult(key, gpu) {
     steps.forEach(s => s.classList.remove('active'));
     pips.forEach(p => p.classList.add('done'));
-    if (!resultEl) return;
-    const r = QUIZ_RESULTS[scoreQuiz(answers)];
-    resultEl.querySelector('.result-name').textContent = r.name;
-    resultEl.querySelector('.result-desc').innerHTML   = r.desc;
-    resultEl.querySelector('.result-tags').innerHTML   = r.tags.map(t => `<span class="rtag">${t}</span>`).join('');
-    const goBtn = resultEl.querySelector('.result-go');
-    if (goBtn) goBtn.onclick = () => { shownav(r.nav); showbar(); showsection(r.section); };
+    const d = QUIZ_DATA[key];
+    resultEl.querySelector('.result-name').textContent = d.name;
+    resultEl.querySelector('.result-desc').textContent = d.desc;
+    const dlBtn   = resultEl.querySelector('.result-dl');
+    const wikiBtn = resultEl.querySelector('.result-wiki');
+    dlBtn.href = d.iso[gpu];
+    wikiBtn.setAttribute('onclick', d.wiki);
+    wikiBtn.href = '#';
     resultEl.classList.add('active');
   }
 
-  document.getElementById(restartId)?.addEventListener('click', () => {
-    step = 0; answers.length = 0;
-    resultEl?.classList.remove('active');
+  restartEl?.addEventListener('click', () => {
+    step = 0; flavour = null;
+    Object.keys(answers).forEach(k => delete answers[k]);
+    resultEl.classList.remove('active');
     quizEl.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
     renderStep();
   });
 
   renderStep();
-}
-
-function initQuiz() {
-  initQuizInstance(document.getElementById('flavour-quiz'),   'quiz-result',   'quiz-restart');
-  initQuizInstance(document.getElementById('flavour-quiz-2'), 'quiz-result-2', 'quiz-restart-2');
 }
 
 /* ── Init ────────────────────────────────────────────────── */
