@@ -8,6 +8,7 @@ Once you have flashed your ISO to a USB drive, follow these steps to boot from i
 
 Most systems have Secure Boot enabled by default, which will block `Out of tree` kernel modules from loading 
 > eg. nvidia , xpadneo , xone , openrazer , displaylink , openZFS
+
 > **NOTE**: you can enable secure boot again after `MOK enrollment` as it will load module as signed after that
 
 To disable it:
