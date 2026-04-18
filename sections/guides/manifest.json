@@ -1,0 +1,16 @@
+[
+  {
+    "id": "install",
+    "title": "How to install",
+    "file": "install.md"
+  },
+  {
+    "id": "",
+    "title": "NVIDIA",
+    "steps": [
+      { "title": "Prerequisites",  "file": "nvidia/01-prereqs.md" },
+      { "title": "Driver install", "file": "nvidia/02-drivers.md" },
+      { "title": "Post-install",   "file": "nvidia/03-post.md" }
+    ]
+  }
+]

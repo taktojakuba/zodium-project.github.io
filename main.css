@@ -939,6 +939,9 @@ a { color: inherit; text-decoration: none; }
   margin: 0 auto;
   padding: 52px 32px 96px;
 }
+.wiki-section.guide-page {
+  max-width: 1250px;
+}
 
 .page-header {
   margin-bottom: 44px;
@@ -1335,3 +1338,38 @@ code {
 .c-muted  { color: var(--text-muted); }
 .c-green  { color: var(--green); }
 .c-accent { color: var(--accent-text); }
+
+/* ── Guides ──────────────────────────────────────────────── */
+.guide-parent { cursor: pointer; gap: 6px; }
+.guide-chevron { font-size: 10px; color: var(--text-muted); width: 12px; }
+.guide-group { display: flex; flex-direction: column; padding-left: 12px; }
+.guide-step { font-size: 12px; }
+
+.stepper { display: flex; align-items: flex-start; gap: 0; margin: 0 0 32px; flex-wrap: wrap; }
+.stepper-pip { display: flex; flex-direction: column; align-items: center; cursor: pointer; min-width: 80px; gap: 6px; }
+.stepper-num { width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--border); display: flex; align-items: center; justify-content: center; font-size: 12px; font-family: var(--font-mono); color: var(--text-muted); background: var(--surface-1); transition: all 0.2s; }
+.stepper-pip.active .stepper-num { border-color: var(--accent-text); color: var(--accent-text); background: var(--surface-2); }
+.stepper-pip.done .stepper-num { border-color: var(--dot-green, #6a9872); color: var(--dot-green, #6a9872); background: var(--surface-2); }
+.stepper-label { font-size: 11px; color: var(--text-muted); text-align: center; max-width: 80px; line-height: 1.3; }
+.stepper-pip.active .stepper-label { color: var(--text-primary); }
+.stepper-line { flex: 1; height: 1.5px; background: var(--border); margin-top: 14px; min-width: 20px; }
+.stepper-nav { display: flex; gap: 10px; margin: 24px 0; }
+.stepper-nav--bottom { margin-top: 40px; border-top: 1px solid var(--border); padding-top: 24px; }
+
+/* ── MD body ─────────────────────────────────────────────── */
+.md-body h1, .md-body h2, .md-body h3 { color: var(--text-primary); margin: 1.4em 0 0.5em; font-family: var(--font-sans); }
+.md-body h1 { font-size: 1.5rem; } .md-body h2 { font-size: 1.15rem; } .md-body h3 { font-size: 1rem; }
+.md-body { width: 100%; max-width: none; box-sizing: border-box; }
+.wiki-section .content-body { max-width: none; width: 100%; }
+.wiki-section .content-block { max-width: none; width: 100%; }
+.md-body p { color: var(--text-secondary); line-height: 1.7; margin: 0 0 1em; }
+.md-body code { font-family: var(--font-mono); font-size: 0.82em; background: var(--surface-2); padding: 2px 6px; border-radius: 4px; }
+.md-body pre { background: var(--surface-2); border: 1px solid var(--border); border-radius: 8px; padding: 16px; overflow-x: auto; margin: 1em 0; }
+.md-body pre code { background: none; padding: 0; }
+.md-body ul, .md-body ol { color: var(--text-secondary); padding-left: 1.4em; line-height: 1.8; margin: 0 0 1em; }
+.md-body a { color: var(--accent-text); text-underline-offset: 3px; }
+.md-body blockquote { border-left: 3px solid var(--accent-text); margin: 1em 0; padding: 0.5em 1em; color: var(--text-muted); font-style: italic; }
+.md-body hr { border: none; border-top: 1px solid var(--border); margin: 2em 0; }
+.md-body table { width: 100%; border-collapse: collapse; margin: 1em 0; font-size: 13px; }
+.md-body th, .md-body td { padding: 8px 12px; border: 1px solid var(--border); text-align: left; color: var(--text-secondary); }
+.md-body th { background: var(--surface-2); color: var(--text-primary); }

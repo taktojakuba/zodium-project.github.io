@@ -9,11 +9,17 @@ const mount = () => document.getElementById('section-mount');
 async function showsection(id) {
   const el = mount();
   const classMap = { home: 'section', rep0: 'page section', 'ast-quiz': 'section' };
-  el.className = classMap[id] ?? 'section wiki-section';
+  el.className = (id.startsWith('guide-')) ? 'section wiki-section' : (classMap[id] ?? 'section wiki-section');
 
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active-nav'));
   document.querySelector(`.nav-item[onclick*="'${id}'"]`)?.classList.add('active-nav');
   window.scrollTo({ top: 0, behavior: 'instant' });
+
+  if (id.startsWith('guide-')) {
+    el.classList.add('guide-page');
+    afterLoad(id);
+    return;
+  }
 
   if (sectionCache[id] && id !== 'rep0') {
     el.innerHTML = sectionCache[id];
@@ -39,6 +45,7 @@ function afterLoad(id) {
   if (id === 'home')                           { initStars(); runTypedAnimation(); initScrollReveal(); }
   if (id === 'ast-quiz') { initQuiz(); initScrollReveal(); }
   if (id === 'rep0')                           { switchRepo('pkgs'); }
+  if (id.startsWith('guide-'))                 { loadGuide(id); }
 }
 
 /* ── Sidebar ─────────────────────────────────────────────── */
@@ -47,6 +54,7 @@ function shownav(id) {
   document.getElementById('homebutton').style.display = 'block';
   const group = document.getElementById(id);
   if (group) group.style.display = 'flex';
+  if (id === 'wiki') buildGuidesNav();
 }
 
 function hidebar() {
@@ -321,6 +329,122 @@ function initQuiz() {
   });
 
   renderStep();
+}
+
+/* ── Guides ──────────────────────────────────────────────── */
+const GUIDES_BASE = 'sections/guides/';
+let guidesManifest = null;
+
+async function fetchManifest() {
+  if (guidesManifest) return guidesManifest;
+  try {
+    const res = await fetch(GUIDES_BASE + 'manifest.json');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    guidesManifest = await res.json();
+  } catch {
+    guidesManifest = [];
+  }
+  return guidesManifest;
+}
+
+async function buildGuidesNav() {
+  const nav = document.getElementById('guides-nav');
+  if (!nav) return;
+  const guides = await fetchManifest();
+  if (!guides.length) {
+    nav.innerHTML = `<span class="nav-item" style="color:var(--text-muted);font-size:12px;padding-left:8px;">no guides yet</span>`;
+    return;
+  }
+  nav.innerHTML = guides.map(g => {
+    if (g.steps) {
+      const steps = g.steps.map((s, i) => `<a onclick="showsection('guide-${g.id}-${i}')" class="nav-item guide-step"><span class="nav-dot"></span>${s.title}</a>`).join('');
+      return `<a onclick="toggleGuideGroup('gg-${g.id}')" class="nav-item guide-parent">
+        <span class="guide-chevron" id="chev-${g.id}">▸</span>${g.title}
+      </a>
+      <div class="guide-group" id="gg-${g.id}" style="display:none;">${steps}</div>`;
+    }
+    return `<a onclick="showsection('guide-${g.id}')" class="nav-item"><span class="nav-dot"></span>${g.title}</a>`;
+  }).join('');
+}
+
+function toggleGuideGroup(id) {
+  const el = document.getElementById(id);
+  const chevId = id.replace('gg-', 'chev-');
+  const chev = document.getElementById(chevId);
+  if (!el) return;
+  const open = el.style.display === 'none';
+  el.style.display = open ? 'flex' : 'none';
+  el.style.flexDirection = 'column';
+  if (chev) chev.textContent = open ? '▾' : '▸';
+}
+
+async function loadGuide(id) {
+  const el = mount();
+  const guides = await fetchManifest();
+
+  // parse id: 'guide-nvidia-2' → guideId='nvidia', stepIdx=2
+  const parts = id.replace('guide-', '').split('-');
+  const stepIdx = isNaN(parts[parts.length - 1]) ? null : parseInt(parts.pop());
+  const guideId = parts.join('-');
+  const guide = guides.find(g => g.id === guideId);
+
+  if (!guide) {
+    el.innerHTML = `<div style="padding:60px 32px;color:var(--text-muted);font-size:13px;">guide not found</div>`;
+    return;
+  }
+
+  const isStepped = !!guide.steps;
+  const file = isStepped ? guide.steps[stepIdx].file : guide.file;
+  const pageTitle = isStepped ? guide.steps[stepIdx].title : guide.title;
+
+  try {
+    const res = await fetch(GUIDES_BASE + file);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const md = await res.text();
+
+    let stepper = '';
+    let prev = '';
+    let next = '';
+    if (isStepped) {
+      const pips = guide.steps.map((s, i) => `
+        <div class="stepper-pip ${i === stepIdx ? 'active' : i < stepIdx ? 'done' : ''}" onclick="showsection('guide-${guideId}-${i}')">
+          <div class="stepper-num">${i < stepIdx ? '✓' : i + 1}</div>
+          <div class="stepper-label">${s.title}</div>
+        </div>`).join('<div class="stepper-line"></div>');
+
+      const prev = stepIdx > 0
+        ? `<a onclick="showsection('guide-${guideId}-${stepIdx - 1}')" class="btn btn-ghost btn-sm">← ${guide.steps[stepIdx - 1].title}</a>`
+        : '';
+      const next = stepIdx < guide.steps.length - 1
+        ? `<a onclick="showsection('guide-${guideId}-${stepIdx + 1}')" class="btn btn-primary btn-sm">${guide.steps[stepIdx + 1].title} →</a>`
+        : '<span class="btn btn-ghost btn-sm" style="opacity:0.4;cursor:default;">done ✓</span>';
+
+      stepper = `
+        <div class="stepper">${pips}</div>
+        <div class="stepper-nav">${prev}${next}</div>`;
+    }
+
+    el.innerHTML = `
+      <div class="page-header">
+        <div class="breadcrumb">
+          <a onclick="showsection('home');hidebar()">home</a>
+          <span class="breadcrumb-sep">/</span>
+          <a onclick="shownav('wiki');showbar();showsection('wik0')">wiki</a>
+          <span class="breadcrumb-sep">/</span>
+          ${isStepped ? `<span>${guide.title}</span><span class="breadcrumb-sep">/</span>` : ''}
+          ${pageTitle}
+        </div>
+        <h1>${pageTitle}</h1>
+        ${isStepped ? `<p class="page-sub">Step ${stepIdx + 1} of ${guide.steps.length}</p>` : ''}
+      </div>
+      <div class="content-body">
+        ${isStepped ? stepper : ''}
+        <div class="content-block md-body">${marked.parse(md)}</div>
+        ${isStepped ? `<div class="stepper-nav stepper-nav--bottom">${prev}${next}</div>` : ''}
+      </div>`;
+  } catch (err) {
+    el.innerHTML = `<div style="padding:60px 32px;color:var(--text-muted);font-size:13px;">failed to load — ${err.message}</div>`;
+  }
 }
 
 /* ── Init ────────────────────────────────────────────────── */
