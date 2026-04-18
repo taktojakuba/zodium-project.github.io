@@ -33,6 +33,17 @@
         { "title": "Post Installation", "file": "guides/installing/05-post-install.md" }
 
       ]
+    },
+    {
+      "id": "packages",
+      "title": "Package Management",
+      "steps": [
+        { "title": "Overview",       "file": "guides/pkgmgmt/01-avaliable.md" },
+        { "title": "How to Use",      "file": "guides/pkgmgmt/02-how-to-use.md" },
+        { "title": "Updates",      "file": "guides/pkgmgmt/03-updates.md" },
+        { "title": "FAQ", "file": "guides/pkgmgmt/04-faq.md" }
+
+      ]
     }
   ]
 }
