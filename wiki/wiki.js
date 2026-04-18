@@ -11,6 +11,12 @@ const mount  = () => document.getElementById('wiki-mount');
 const esc    = s  => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 const errBox = msg => `<div class="err-box">failed to load — ${msg}</div>`;
 
+function rebaseImages(html, fileDir) {
+  return html.replace(/(<img\s[^>]*src=")(?!https?:\/\/|\/|data:)\.?\/?([^"]+)"/gi,
+    (_, prefix, src) => `${prefix}/wiki/${fileDir}/${src}"`
+  );
+}
+
 function slugify(str) {
   return str.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 }
@@ -202,7 +208,7 @@ async function renderPage(page) {
           <h1>${esc(page.title)}</h1>
         </div>
         <div class="content-body">
-          <div class="content-block md-body">${marked.parse(body)}</div>
+          <div class="content-block md-body">${rebaseImages(marked.parse(body), page.file.replace(/\/[^/]+$/, ''))}</div>
         </div>
       </div>`;
   } catch (err) { el.innerHTML = errBox(err.message); }
@@ -226,7 +232,7 @@ async function renderGuideSingle(guide) {
           <h1>${esc(guide.title)}</h1>
         </div>
         <div class="content-body">
-          <div class="content-block md-body">${marked.parse(body)}</div>
+          <div class="content-block md-body">${rebaseImages(marked.parse(body), guide.file.replace(/\/[^/]+$/, ''))}</div>
         </div>
       </div>`;
   } catch (err) { el.innerHTML = errBox(err.message); }
@@ -270,7 +276,7 @@ async function renderGuideStep(guide, stepIdx) {
         <div class="content-body">
           <div class="stepper">${pips}</div>
           <div class="stepper-nav">${prev}${next}</div>
-          <div class="content-block md-body">${marked.parse(body)}</div>
+          <div class="content-block md-body">${rebaseImages(marked.parse(body), step.file.replace(/\/[^/]+$/, ''))}</div>
           <div class="stepper-nav stepper-nav--bottom">${prev}${next}</div>
         </div>
       </div>`;
