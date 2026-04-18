@@ -5,6 +5,15 @@
     "file": "install.md"
   },
   {
+    "id": "post-install",
+    "title": "Post install",
+    "steps": [
+      { "title": "1",  "file": "post-install/01.md" },
+      { "title": "2", "file": "post-install/02.md" },
+      { "title": "3",   "file": "post-install/03.md" }
+    ]
+  },
+  {
     "id": "",
     "title": "NVIDIA",
     "steps": [
@@ -12,5 +21,30 @@
       { "title": "Driver install", "file": "nvidia/02-drivers.md" },
       { "title": "Post-install",   "file": "nvidia/03-post.md" }
     ]
+  },
+  {
+    "id": "secureboot",
+    "title": "secure boot",
+    "file": "secureboot.md"
+  },
+  {
+    "id": "post-install",
+    "title": "Post install",
+    "file": "postinstall.md"
+  },
+  {
+    "id": "htc-niri",
+    "title": "how to configure Niri",
+    "file": "htc/htc-niri.md"
+  },
+  {
+    "id": "htc-zfetch",
+    "title": "how to configure zfetch",
+    "file": "htc/htc-zfetch.md"
+  },
+  {
+    "id": "package-managment",
+    "title": "package managment",
+    "file": "pkgmg.md"
   }
 ]
