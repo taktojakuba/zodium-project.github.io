@@ -1,6 +1,6 @@
 # zcore
 
-Minimal, image-based Linux distribution built on fedora-bootc. No desktop by default — extend it into anything.
+Minimal, Immutable Linux distribution, No desktop by default, used as base for **zynori** & **zykron**.
 
 ## Overview
 
@@ -12,10 +12,18 @@ Minimal without being unusable. zcore skips the package bloat and unnecessary de
 
 > **Note:** zcore is not a full desktop. Look at the flavours — zynori or zykron — if you want a ready-to-use desktop environment.
 
+> **Note**: zcore ships with zsh shell configured out of box with the following preconfigured :
+ - Starship
+ - eza, fd-find, btop, ripgrep, trash-cli, zoxide & bat **preinstalled**
+ - custom shell aliases
+ - hints & tips shown when  using commands (limited)
+ - zsh-autosuggestions & zsh-syntax-highlighting
+
+ To configure them & enable/disable them look at config in **/etc/zshrc** & write your overrdes in **/etc/zsh-zodium-overrides**
+
 ## Variants
 
-**zcore-bootc** — Standard base for Intel and AMD GPU systems. No proprietary drivers.
-
+**zcore-bootc** — Standard base for Intel and AMD GPU systems.
 **zcore-nvidia** — Includes proprietary NVIDIA drivers. Requires Turing architecture or newer.
 
 ## Switching to zcore
@@ -28,16 +36,24 @@ Run the command, wait for the image to stage, then reboot. The next boot is your
 
 ## Download
 
-- zcore-bootc (intel/amd) — https://archive.org/download/zcore-bootc/zcore-bootc.iso
-- zcore-nvidia (nvidia) — https://archive.org/download/zcore-nvidia/zcore-nvidia.iso
+- zcore-bootc (intel/amd) — [zcore-booc.iso](https://archive.org/download/zcore-bootc/zcore-bootc.iso)
+- zcore-nvidia ( nvidia) — [zcore-nvidia.iso](https://archive.org/download/zcore-nvidia/zcore-nvidia.iso)
 
 ## What's included
 
-- OCI image-based — fully reproducible and layerable
-- No desktop environment — start clean, add what you need
-- Non-free multimedia codecs included out of the box
-- Out-of-tree kernel modules and hardware support
-- Podman and Docker included and configured
-- Modern CLI tooling, udev rules, and firmware packages
-- Performance-oriented kernel and system tweaks applied by default
-- Easily extended via `FROM` in your own Containerfile
+### zcore-bootc :
+- Non-free multimedia codecs
+- FFmpeg with all plugins & codecs support
+- Non-free Intel & AMD drivers
+- Non-free gstreamer plugins
+- Pipewire with aptx support & more
+- Non-free mesa drivers & extensions
+- Docker , Podman & Waydroid
+- Udev rules for better hardware support
+- Out-of-tree kmods
+
+### zcore-nvidia :
+- All of the above
+- Nvidia container toolkit
+- Proprietary nvidia drivers
+- Nvidia specific services & tweaks

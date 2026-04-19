@@ -11,13 +11,13 @@ zynori is a zcore flavour built around **niri** — a scrollable tiling Wayland 
 ## Switching to zynori
 
 ```bash
-sudo bootc switch ghcr.io/zodium-project/zynori:latest
+sudo bootc switch ghcr.io/zodium-project/zynori-bootc:latest
 ```
 
 ## Download
 
-- zynori (intel/amd) — https://archive.org/download/zynori-bootc/zynori-bootc.iso
-- zynori (nvidia) — https://archive.org/download/zynori-nvidia/zynori-nvidia.iso
+- zynori (intel/amd) — [zynori-bootc.iso](https://archive.org/download/zynori-bootc/zynori-bootc.iso)
+- zynori (nvidia) — [zynori-nvidia.iso](https://archive.org/download/zynori-nvidia/zynori-nvidia.iso)
 
 ## What's included
 

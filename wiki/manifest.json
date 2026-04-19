@@ -1,9 +1,9 @@
 {
   "wiki": {
     "distros": [
-      { "id": "zcore",  "title": "zcore",  "file": "distros/zcore.md",  "sub": "Minimal image-based base" },
-      { "id": "zynori", "title": "zynori", "file": "distros/zynori.md", "sub": "Niri tiling Wayland" },
-      { "id": "zykron", "title": "zykron", "file": "distros/zykron.md", "sub": "KDE Plasma desktop" }
+      { "id": "zcore",  "title": "zcore",  "file": "distros/zcore.md",  "sub": "Minimal base"    },
+      { "id": "zynori", "title": "zynori", "file": "distros/zynori.md", "sub": "Niri & Noctalia" },
+      { "id": "zykron", "title": "zykron", "file": "distros/zykron.md", "sub": "KDE Plasma"      }
     ],
     "tools": [
       { "id": "zfetch", "title": "zfetch", "file": "tools/zfetch.md", "sub": "System info fetch" },
