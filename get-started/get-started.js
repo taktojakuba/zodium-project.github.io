@@ -56,7 +56,8 @@ function initQuiz() {
     './screenshots/desktop-no.png',
   ];
   let cycleIdx = 0, cycleTimer = null, activeSrc = null, hoverTimer = null;
-  CYCLE.forEach(src => { const i = new Image(); i.src = src; });
+  const isMobile = () => window.innerWidth <= 768;
+  if (!isMobile()) CYCLE.forEach(src => { const i = new Image(); i.src = src; });
 
   function showImg(src, isActive) {
     if (!preview) return;
@@ -73,6 +74,7 @@ function initQuiz() {
   }
 
   function startCycle() {
+    if (isMobile()) return;
     stopCycle();
     showImg(CYCLE[cycleIdx % CYCLE.length], false);
     cycleTimer = setInterval(() => { cycleIdx++; showImg(CYCLE[cycleIdx % CYCLE.length], false); }, 2500);
@@ -82,10 +84,12 @@ function initQuiz() {
 
   quizEl.querySelectorAll('.quiz-option[data-preview]').forEach(opt => {
     opt.addEventListener('mouseenter', () => {
+      if (isMobile()) return;
       clearTimeout(hoverTimer);
       hoverTimer = setTimeout(() => { stopCycle(); showImg(opt.dataset.preview, true); }, 55);
     });
     opt.addEventListener('mouseleave', () => {
+      if (isMobile()) return;
       clearTimeout(hoverTimer);
       hoverTimer = setTimeout(() => {
         if (persistedSrc) { showImg(persistedSrc, true); return; }
