@@ -20,11 +20,16 @@ Zodium distros supports six ways to install software. Here's a quick overview:
 
 ---
 
-### 🍺 Brew (Homebrew) — **Installed by default**
+### 🍺 Brew (Homebrew) — **User Installed**
 
 Homebrew, originally a macOS tool, runs entirely in userspace under `/home/linuxbrew`. It doesn't touch the system and installs a huge range of CLI tools and developer utilities.
 
 Best for: **CLI tools, developer utilities, languages (Node, Python, Ruby, etc.)**
+
+#### ***Install homebrew via this commnad*** :
+```
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+``` 
 
 >We recommend installing bbrew (bold brew) if you want a nice TUI way of managing Homebrew.
 
@@ -79,7 +84,7 @@ Distrobox creates full Linux container environments using Podman or Docker. You 
 
 Best for: **Software only available on specific distros, development environments, running package managers like `zypper`,`apt`,`dnf`,`pacman`**
 
-Install via Brew:
+#### **Install via Brew**:
 
 ```bash
 brew install distrobox
