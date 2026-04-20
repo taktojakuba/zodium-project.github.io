@@ -212,6 +212,15 @@
   cursor: pointer;
 }
 .mobile-nav-toggle:hover { border-color: var(--border-hover); color: var(--text-primary); }
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+  background: rgba(0, 0, 0, 0.4);
+}
+.sidebar-overlay.open { display: block; }
 @media (max-width: 768px) {
   .page { padding: 80px 16px 64px; }
   .install-grid { grid-template-columns: 1fr; }

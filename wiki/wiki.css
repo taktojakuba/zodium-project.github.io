@@ -104,6 +104,15 @@
 }
 .mobile-nav-toggle:hover { border-color: var(--border-hover); color: var(--text-primary); }
 
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+  background: rgba(0, 0, 0, 0.4);
+}
+.sidebar-overlay.open { display: block; }
+
 /* ── Wiki content ────────────────────────────────────────── */
 .wiki-section {
   max-width: 100%;

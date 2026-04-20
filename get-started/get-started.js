@@ -145,4 +145,9 @@ function initQuiz() {
 
 document.getElementById('nav-toggle')?.addEventListener('click', () => {
   document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('sidebar-overlay').classList.toggle('open');
+});
+document.getElementById('sidebar-overlay')?.addEventListener('click', () => {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('sidebar-overlay').classList.remove('open');
 });
