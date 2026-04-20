@@ -152,4 +152,8 @@
                 const dlIcon     = `<svg width="11" height="11" viewBox="0 0 12 12" fill="none"><path d="M6 2v6M3.5 5.5L6 8l2.5-2.5M2 10h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
 
                 // ── Boot ─────────────────────────────────────────────────
-                loadRepo('pkgs');            
+                loadRepo('pkgs');
+
+                document.getElementById('nav-toggle')?.addEventListener('click', () => {
+                  document.getElementById('sidebar').classList.toggle('open');
+                });

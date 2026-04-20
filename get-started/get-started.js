@@ -142,3 +142,7 @@ function initQuiz() {
 
   renderStep();
 }
+
+document.getElementById('nav-toggle')?.addEventListener('click', () => {
+  document.getElementById('sidebar').classList.toggle('open');
+});
