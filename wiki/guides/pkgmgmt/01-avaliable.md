@@ -99,7 +99,7 @@ brew install distrobox
 | Manager | Default? | Best For |
 |---|---|---|
 | Flatpak | ✔ Yes | GUI desktop apps |
-| Brew | ✔ Yes | CLI tools, dev utilities |
+| Brew | ✚ User | CLI tools, dev utilities |
 | Nix | ✔ Yes | Dev tools, reproducible envs |
 | rpm-ostree | ✔ Yes | System-level RPM packages |
 | AppImages | ✚ User | Portable standalone apps |

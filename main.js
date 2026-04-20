@@ -5,7 +5,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   initStars();
   runTypedAnimation();
-  initScrollReveal();
 });
 
 /* ── Stars ───────────────────────────────────────────────── */
@@ -76,14 +75,4 @@ function runTypedAnimation() {
     setTimeout(() => typeLine(lines[idx], () => { idx++; next(); }), idx === 0 ? 200 : 0);
   }
   setTimeout(next, 1600);
-}
-
-/* ── Scroll reveal ───────────────────────────────────────── */
-function initScrollReveal() {
-  const targets = document.querySelectorAll('.tool-card, .flavour-card, .fstrip-item');
-  if (!targets.length) return;
-  const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('revealed'); obs.unobserve(e.target); } });
-  }, { threshold: 0.08 });
-  targets.forEach((el, i) => { el.style.animationDelay = `${i*55}ms`; obs.observe(el); });
 }

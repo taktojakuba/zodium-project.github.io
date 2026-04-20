@@ -28,7 +28,7 @@ async function fetchManifest() {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     _manifest = await res.json();
   } catch {
-    _manifest = { wiki: { distros: [], flavours: [], tools: [] }, guides: [] };
+    _manifest = { wiki: { distros: [], tools: [] }, guides: [] };
   }
   return _manifest;
 }

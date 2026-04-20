@@ -46,8 +46,6 @@ try {
     const xml = await decompressGz(await res.arrayBuffer());
 
     cache[repo] = parseXml(xml, repo);
-    const countEl = $('count-' + repo);
-    if (countEl) countEl.textContent = cache[repo].length;
     updateStats(repo, cache[repo]);
     renderPackages();
 } catch (err) {
