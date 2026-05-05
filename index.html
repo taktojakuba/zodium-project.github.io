@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ferret Project | The Immutable Linux Desktop</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="ferret.css">
+<style>
+  /* Demo-specific overrides */
+  .demo-pill { display:inline-block; background:var(--color-accent-subtle); color:var(--color-accent); font-size:var(--font-size-xs); font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:var(--space-1) var(--space-3); border-radius:var(--radius-pill); margin-bottom:var(--space-4); }
+  .ferret-emoji { font-size:2.5rem; }
+  .hero__split { display:grid; grid-template-columns:1fr 1fr; gap:var(--space-12); align-items:center; }
+  .hero-art { background:var(--color-bg-elevated); border:1px solid var(--color-border); border-radius:var(--radius-xl); height:380px; display:flex;align-items:center;justify-content:center;font-size:6rem; position:relative; overflow:hidden; }
+  .hero-art::before { content:''; position:absolute;inset:0; background:radial-gradient(ellipse at 60% 40%, var(--color-accent-glow) 0%, transparent 70%); }
+  @media(max-width:768px){ .hero__split{grid-template-columns:1fr;} .hero-art{height:200px;font-size:4rem;} }
+</style>
+</head>
+<body class="page-body">
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="navbar__inner">
+    <a href="#" class="navbar__brand">
+      <div style="width:36px;height:36px;background:var(--color-accent-subtle);border:1px solid var(--color-border-strong);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:1.2rem;">🐾</div>
+      <span class="navbar__wordmark">Ferret<span>project</span></span>
+    </a>
+
+    <div class="navbar__nav">
+      <a href="#" class="navbar__link navbar__link--active">Home</a>
+      <a href="#features" class="navbar__link">Features</a>
+      <a href="#flavours" class="navbar__link">Flavours</a>
+      <a href="https://github.com/ferret-project" class="navbar__link">GitHub</a>
+      <a href="#faq" class="navbar__link">FAQ</a>
+    </div>
+
+    <div class="navbar__actions">
+      <a href="#flavours" class="btn btn--primary btn--sm">Get FerretOS</a>
+      <button class="navbar__hamburger" aria-label="Menu">
+        <span class="navbar__hamburger-line"></span>
+        <span class="navbar__hamburger-line (text-dark)"></span>
+        <span class="navbar__hamburger-line"></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero__bg"></div>
+  <div class="container">
+    <div class="hero__split">
+      <div class="hero__content animate-fade-in">
+        <div class="hero__eyebrow">Cloud-Native Desktop</div>
+        <h1 class="hero__title">Experience the<br><span class="hero__title-accent">Atomic Desktop</span></h1>
+        <p class="hero__subtitle">FerretOS is a collection of Fedora-based immutable operating systems delivered as OCI images. Reliable, reproducible, and ready for work.</p>
+        <div class="hero__actions">
+          <a href="#flavours" class="btn btn--primary btn--lg btn--pill">View Flavours</a>
+          <a href="https://ferret-project.github.io/" class="btn btn--secondary btn--lg btn--pill">Read Documentation</a>
+        </div>
+      </div>
+      <div class="hero-art animate-fade-in delay-2">
+        <span style="position:relative;z-index:1;">🐾</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section features" id="features">
+  <div class="container">
+    <div class="section-header section-header--center section-header--narrow">
+      <h2 class="section-title">Built on the Atomic Foundation</h2>
+      <p class="section-description">Harnessing the power of Fedora's immutable architecture with curated enhancements.</p>
+    </div>
+
+    <div class="grid grid--3">
+      <div class="feature-card">
+        <div class="feature-card__icon">🏗️</div>
+        <h3 class="feature-card__title">OCI-Based</h3>
+        <p class="feature-card__description">Distributed as container images via GitHub Container Registry. Updates are atomic, predictable, and easily rolled back.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">🔒</div>
+        <h3 class="feature-card__title">Immutable Core</h3>
+        <p class="feature-card__description">The system root is read-only. Say goodbye to configuration drift and accidental system breakage during updates.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">📦</div>
+        <h3 class="feature-card__title">Container-First</h3>
+        <p class="feature-card__description">Native support for Distrobox and Toolbx. Keep your host system clean while developing in any environment you need.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">🎨</div>
+        <h3 class="feature-card__title">Curated Experiences</h3>
+        <p class="feature-card__description">From GNOME to Niri, each flavour is pre-configured with sensible defaults and optimized performance tweaks.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">🚀</div>
+        <h3 class="feature-card__title">Fedora Powered</h3>
+        <p class="feature-card__description">Built on top of Fedora’s leading-edge stable base, giving you access to the latest kernels and drivers.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-card__icon">🤝</div>
+        <h3 class="feature-card__title">Open Source</h3>
+        <p class="feature-card__description">Fully transparent build processes. Check our recipes on GitHub and see exactly what goes into your OS.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD -->
+<section class="section section--tinted download" id="flavours">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="section-eyebrow">The Lineup</span>
+      <h2 class="section-title">Choose your Flavour</h2>
+      <p class="section-description" style="max-width: 120ch;">All FerretOS variants are built with an emphasis on stability and modern container workflows.</p>
+    </div>
+
+    <div class="download__options">
+      <div class="download-card">
+        <span class="download-card__label">Core</span>
+        <div class="download-card__name">MinkOS</div>
+        <p class="download-card__meta">tty · Fedora-based · x86_64</p>
+        <a href="https://github.com/ferret-project/ferretos" class="btn btn--primary btn--pill">Get FerretOS</a>
+      </div>
+      <div class="download-card">
+        <span class="download-card__label">Tiling Window Manager</span>
+        <div class="download-card__name">NorixOS</div>
+        <p class="download-card__meta">Niri Tiling Compositor + Noctalia-Shell · x86_64</p>
+        <a href="https://github.com/ferret-project/norixos" class="btn btn--primary btn--pill">Get NorixOS</a>
+      </div>
+      <div class="download-card">
+        <span class="download-card__label">KDE Plasma</span>
+        <div class="download-card__name">KoralOS</div>
+        <p class="download-card__meta">Plasma Desktop · x86_64</p>
+        <a href="https://github.com/ferret-project/koralos" class="btn btn--primary btn--pill">Get KoralOS</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq" id="faq">
+  <div class="container">
+    <div class="section-header section-header--center">
+      <span class="section-eyebrow">Common Queries</span>
+      <h2 class="section-title">Frequently Asked</h2>
+    </div>
+    <div class="faq__list">
+      <div class="accordion-item accordion-item--open">
+        <button class="accordion-trigger">
+          How do I install FerretOS?
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">Since FerretOS is an OCI-based Fedora remix, you can install it by starting with a standard Fedora Atomic (Silverblue/Kinoite) installation and "rebasinng" to our image using the <code>rpm-ostree rebase</code> command.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          How do I manage software?
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">We recommend Flatpaks for desktop applications and Distrobox/Toolbx for CLI tools and development environments. This keeps your base system clean and stable.</div>
+        </div>
+      </div>
+      <div class="accordion-item">
+        <button class="accordion-trigger">
+          Is this project affiliated with Fedora?
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-content">
+          <div class="accordion-body">Ferret Project is an independent community project. While we use Fedora as our upstream base and leverage their excellent Atomic technology, we are not officially affiliated with the Fedora Project or Red Hat.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <div class="navbar__wordmark" style="font-family:var(--font-display);font-size:var(--font-size-xl);font-weight:700;margin-bottom:var(--space-3);">Ferret<span style="color:var(--color-accent);">Project</span></div>
+        <p>Providing modern, container-native Linux experiences through the power of OCI and Fedora Atomic.</p>
+      </div>
+      <div>
+        <div class="footer__col-title">Project</div>
+        <div class="footer__links">
+          <a href="https://github.com/ferret-project/ferretos" class="footer__link">FerretOS</a>
+          <a href="https://github.com/ferret-project/norixos" class="footer__link">NorixOS</a>
+          <a href="https://github.com/ferret-project/koralos" class="footer__link">KoralOS</a>
+        </div>
+      </div>
+      <div>
+        <div class="footer__col-title">Community</div>
+        <div class="footer__links">
+          <a href="https://github.com/ferret-project" class="footer__link">GitHub</a>
+          <a href="https://ferret-project.github.io/" class="footer__link">Documentation</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <p class="footer__legal">© 2026 Ferret Project. Built with Fedora and Love.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  //navbar button color change
+  const navLinks = document.querySelectorAll('.navbar__link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.forEach(l => l.classList.remove('navbar__link--active'));
+      link.classList.add('navbar__link--active');
+    });
+  });
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('navbar--scrolled', window.scrollY > 20);
+  });
+
+  // Accordion
+  document.querySelectorAll('.accordion-trigger').forEach(trigger => {
+    trigger.addEventListener('click', () => {
+      const item = trigger.closest('.accordion-item');
+      const isOpen = item.classList.contains('accordion-item--open');
+      document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('accordion-item--open'));
+      if (!isOpen) item.classList.add('accordion-item--open');
+    });
+  });
+</script>
+</body>
+</html>
