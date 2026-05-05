@@ -1,5 +1,5 @@
-[zodium-kmods]
-name=Zodium Kernel Modules
-baseurl=https://zodium-project.github.io/repo/kmods/x86_64/
+[ferret-kmods]
+name=Ferret Kmods
+baseurl=https://ferret-project.github.io/repo/kmods/x86_64/
 enabled=1
 gpgcheck=0
