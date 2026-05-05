@@ -1,0 +1,63 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ferret-Project | Packages</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="icon" href="./assets/ferret-icon.png">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Nunito:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ferret.css">
+    <style>
+    .demo-pill { display:inline-block; background:var(--color-accent-subtle); color:var(--color-accent); font-size:var(--font-size-xs); font-weight:700; letter-spacing:.12em; text-transform:uppercase; padding:var(--space-1) var(--space-3); border-radius:var(--radius-pill); margin-bottom:var(--space-4); }
+    .ferret-emoji { font-size:2.5rem; }
+    .hero__split { display:grid; grid-template-columns:1fr 1fr; gap:var(--space-12); align-items:center; }
+    .hero-art { background:var(--color-bg-elevated); border:1px solid var(--color-border); border-radius:var(--radius-xl); height:380px; display:flex;align-items:center;justify-content:center;font-size:6rem; position:relative; overflow:hidden; }
+    .hero-art::before { content:''; position:absolute;inset:0; background:radial-gradient(ellipse at 60% 40%, var(--color-accent-glow) 0%, transparent 70%); }
+    @media(max-width:768px){ .hero__split{grid-template-columns:1fr;} .hero-art{height:200px;font-size:4rem;} }
+    </style>
+    </head>
+    <body class="page-body">
+
+    <nav class="navbar" id="navbar">
+    <div class="navbar__inner">
+        <a href="./index.html" class="navbar__brand">
+        <div style="width:36px;height:36px;background:var(--color-accent-subtle);border:1px solid var(--color-border-strong);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:1.2rem;"><img src="./assets/ferret-icon.png"></div>
+        <span class="navbar__wordmark">Ferret<span>Packages</span></span>
+        </a>
+    </div>
+    </nav>
+
+    <section class="section section--tinted download" id="flavours">
+    <div class="container">
+        <div class="section-header section-header--center">
+        <span class="section-eyebrow">Download Ferret Packages</span>
+        <div class="search-container" style="margin-top: var(--space-6); display: flex; gap: var(--space-4); justify-content: center; flex-wrap: wrap;">
+            <input type="text" id="search-input" placeholder="Search packages..." 
+                style="padding: var(--space-2) var(--space-4); border-radius: var(--radius-pill); border: 1px solid var(--color-border); background: var(--color-bg-elevated); color: var(--color-text); min-width: 280px;">
+            
+            <select id="sort-select" style="padding: var(--space-2) var(--space-4); border-radius: var(--radius-pill); border: 1px solid var(--color-border); background: var(--color-bg-elevated); color: var(--color-text);">
+            <option value="name">Sort by Name</option>
+            <option value="size">Sort by Size</option>
+            <option value="version">Sort by Version</option>
+            </select>
+        </div>
+        <div class="repo-stats" style="margin-top: var(--space-4); font-size: var(--font-size-sm); opacity: 0.7;">
+            <span id="stat-repo">zodium-pkgs</span> • 
+            <span id="stat-total">0</span> packages • 
+            Last updated: <span id="stat-updated">—</span>
+        </div>
+        </div>
+        <div class="download__options" id="pkg-list">
+        <div class="state-box">
+            <div class="spinner"></div>
+            <span>Initializing...</span>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    </body>
+    <script src="main.js"></script>
+    </html>
