@@ -1,5 +1,5 @@
 [ferret-pkgs]
-name=Ferret Packages
+name=Ferret Linux Packages
 baseurl=https://ferret-project.github.io/repo/pkgs/x86_64/
 enabled=1
 gpgcheck=0

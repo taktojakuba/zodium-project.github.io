@@ -1,5 +1,5 @@
 [ferret-kmods]
-name=Ferret Kmods
+name=Ferret Linux Kernel Modules
 baseurl=https://ferret-project.github.io/repo/kmods/x86_64/
 enabled=1
 gpgcheck=0
